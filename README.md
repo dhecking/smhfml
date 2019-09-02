@@ -1,3 +1,3 @@
 # smhfml
 
-The home of my daily blog on life in general
+daily blog on life in general
