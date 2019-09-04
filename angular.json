@@ -125,7 +125,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "cname": "smhfml.com",
-            "repo": "https://github.com/dhecking/-smhfml.git"
+            "repo": "https://github.com/dhecking/smhfml.git"
           }
         }
       }
