@@ -6,10 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid.component';
+import { ThreeComponent } from './three.component';
 
 @NgModule({
   imports: [BrowserModule, BrowserAnimationsModule, MatIconModule, MatToolbarModule, MatSlideToggleModule, MatGridListModule],
-  declarations: [AppComponent, GridComponent],
+  declarations: [AppComponent, GridComponent, ThreeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
