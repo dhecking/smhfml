@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-grid',
-  styleUrls: ['./app.grid.css'],
-  templateUrl: './app.grid.html',
+  templateUrl: './grid.component.html',
+  styleUrls: ['./grid.component.css'],
 })
 export class GridComponent {}
 
