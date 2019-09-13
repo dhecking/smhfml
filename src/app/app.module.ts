@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { MatIconModule, MatToolbarModule } from '@angular/material';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +16,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TabComponent } from './tab/tab.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { GridComponent } from './grid/grid.component';
 import { ThreeComponent } from './three/three.component';
 import { MapComponent } from './map/map.component';
@@ -23,6 +24,7 @@ import { GltfComponent } from './gltf/gltf.component';
 import { ErrorComponent } from './error/error.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 const appRoutes: Routes = [
   { path: 'map', component: MapComponent },
@@ -39,9 +41,11 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    MatListModule,
     MatMenuModule,
     MatTabsModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatGridListModule,
     RouterModule.forRoot(
       appRoutes,
@@ -54,11 +58,12 @@ const appRoutes: Routes = [
     EngineComponent,
     GltfComponent,
     ErrorComponent,
-    ToolbarComponent,
+    SidenavComponent,
     GridComponent,
     ThreeComponent,
     MapComponent,
-    TabComponent
+    TabComponent,
+    SidenavComponent
   ],
   bootstrap: [AppComponent]
 })

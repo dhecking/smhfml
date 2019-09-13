@@ -64,7 +64,7 @@ export class MapComponent {
         map.addListener("click", (event: any) => {
           console.log("map.click: " + event.latLng);
           infowindow.setPosition(event.latLng);
-          infowindow.setContent(event.latLng);
+          infowindow.setContent(event.latLng + "");
           infowindow.open(map);
         });
 

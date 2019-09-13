@@ -1,0 +1,15 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-drawer{
+  background: transparent;
+}
+
+.mat-drawer:not(.mat-drawer-side){
+  box-shadow: none;
+}

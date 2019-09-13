@@ -1,0 +1,18 @@
+<mat-drawer-container class="example-container" hasBackdrop="false">
+  <mat-drawer over opened disableClose>
+    <mat-list>
+      <mat-list-item>
+        <a mat-icon-button routerLink="/map"><mat-icon>love</mat-icon></a>
+      </mat-list-item>
+      <mat-list-item>
+        <a mat-icon-button routerLink="/3d"><mat-icon>love</mat-icon></a>
+      </mat-list-item>
+      <mat-list-item>
+        <a mat-icon-button routerLink="/grid"><mat-icon>love</mat-icon></a>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
