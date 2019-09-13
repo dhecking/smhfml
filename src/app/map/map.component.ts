@@ -1,14 +1,6 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
 
 declare var google: any;
-let map: any;
-let marker: any;
-let infowindow: any;
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
 
 const iconBase = "https://maps.google.com/mapfiles/ms/icons/";
 
@@ -18,10 +10,12 @@ const iconBase = "https://maps.google.com/mapfiles/ms/icons/";
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent {
-  @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
+  map: google.maps.Map;
+  marker: google.maps.Marker;
+  location: google.maps.LatLng;
+  options: PositionOptions = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
 
-  lat: number = 33.76057524016749;
-  lng: number = -84.36079368475487;
+  @ViewChild("googlemaps", { static: true }) mapElement: ElementRef;
 
   constructor() {
     console.log("MapComponent::constructor");
@@ -29,60 +23,106 @@ export class MapComponent {
   }
 
   initMap() {
-    console.log("MapComponent::initMap()");
+    console.log("MapComponent::initMap");
 
-    navigator.geolocation.getCurrentPosition(
-      location => {
-        map = new google.maps.Map(this.mapElement.nativeElement, {
+    if (navigator.geolocation) {
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(`starting postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+
+        this.map = new google.maps.Map(this.mapElement.nativeElement, {
           center: {
-            lat: location.coords.latitude,
-            lng: location.coords.longitude
+            lat: 33.76057524016749,
+            lng: -84.36079368475487
           },
           disableDefaultUI: true,
-          zoom: 18,
-          styles: this.getCustomStyle()
+          styles: this.getCustomStyle(),
+          zoom: 18
         });
 
-        infowindow = new google.maps.InfoWindow();
-
-        marker = new google.maps.Marker({
-          position: { lat: location.coords.latitude, lng: location.coords.longitude },
-          map,
-          title: 'Click to zoom',
-          icon: iconBase + 'blue-dot.png',
-          animation: google.maps.Animation.DROP
-        });
-
-        // Recentering logic, tie this to the proper icon overlay
-        map.addListener('center_changed', () => {
-          console.log("map.center_changed: ");
-          window.setTimeout(() => {
-            map.panTo(marker.getPosition());
-          }, 3000);
-        });
-
-        map.addListener("click", (event: any) => {
-          console.log("map.click: " + event.latLng);
-          infowindow.setPosition(event.latLng);
-          infowindow.setContent(event.latLng + "");
-          infowindow.open(map);
-        });
-
-        marker.addListener('click', (event: any) => {
-          console.log("marker.click: " + event.latLng);
-          infowindow.setPosition(event.latLng);
-          infowindow.setContent('<h2>Yes, I wanna be a donor!</h2>' +
-          '<h3><a href="/add-donor/' + marker.getPosition().lat() + '/' + marker.getPosition().lng()  + '">Register Here</a></h3>');
-          infowindow.open(map, marker);
-        });
-
+        this.showPosition(position);
       },
-      error => {
+      (error) => {
         console.log(error);
       },
-      options
-    );
+      this.options);
 
+      navigator.geolocation.watchPosition((position) => {
+        console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+        this.showPosition(position);
+      });
+
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+
+  }
+
+  showPosition(position: Position) {
+
+    this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    this.map.panTo(this.location);
+
+    if (!this.marker) {
+      this.marker = new google.maps.Marker({
+        position: this.location,
+        map: this.map,
+        title: '@dhecking'
+      });
+    } else {
+      this.marker.setPosition(this.location);
+    }
+  }
+
+  getMutedBlue() {
+    return [
+      {
+        featureType: "all",
+        stylers: [
+          {
+            saturation: 0
+          },
+          {
+            hue: "#e7ecf0"
+          }
+        ]
+      },
+      {
+        featureType: "road",
+        stylers: [
+          {
+            saturation: -70
+          }
+        ]
+      },
+      {
+        featureType: "transit",
+        stylers: [
+          {
+            visibility: "off"
+          }
+        ]
+      },
+      {
+        featureType: "poi",
+        stylers: [
+          {
+            visibility: "off"
+          }
+        ]
+      },
+      {
+        featureType: "water",
+        stylers: [
+          {
+            visibility: "simplified"
+          },
+          {
+            saturation: -60
+          }
+        ]
+      }
+    ];
   }
 
   getCustomStyle() {

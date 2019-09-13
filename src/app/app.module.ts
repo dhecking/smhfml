@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { MatIconModule, MatToolbarModule } from '@angular/material';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -15,11 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TabComponent } from './tab/tab.component';
 import { GridComponent } from './grid/grid.component';
-import { ThreeComponent } from './three/three.component';
 import { MapComponent } from './map/map.component';
-import { EngineComponent } from './engine/engine.component';
 import { GltfComponent } from './gltf/gltf.component';
 import { ErrorComponent } from './error/error.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -42,9 +38,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatDividerModule,
     MatListModule,
-    MatMenuModule,
     MatTabsModule,
-    MatToolbarModule,
     MatSidenavModule,
     MatGridListModule,
     RouterModule.forRoot(
@@ -55,14 +49,11 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
-    EngineComponent,
     GltfComponent,
     ErrorComponent,
     SidenavComponent,
     GridComponent,
-    ThreeComponent,
     MapComponent,
-    TabComponent,
     SidenavComponent
   ],
   bootstrap: [AppComponent]
