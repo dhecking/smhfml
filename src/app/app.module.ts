@@ -21,6 +21,8 @@ import { MapComponent } from './map/map.component';
 import { EngineComponent } from './engine/engine.component';
 import { GltfComponent } from './gltf/gltf.component';
 import { ErrorComponent } from './error/error.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: 'map', component: MapComponent },
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
-    )
+    ),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppComponent,
