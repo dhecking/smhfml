@@ -1,29 +1,41 @@
-import { Component, ViewChild, AfterContentInit, ElementRef } from "@angular/core";
-
-declare var google: any;
-
-const iconBase = "https://maps.google.com/mapfiles/ms/icons/";
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  AfterContentInit
+} from "@angular/core";
 
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
-export class MapComponent implements AfterContentInit {
+export class MapComponent implements OnInit, AfterContentInit {
+  google: any;
   map: google.maps.Map;
   marker: google.maps.Marker;
   location: google.maps.LatLng;
-  options: PositionOptions = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
+  options: PositionOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
 
   @ViewChild("googlemaps", { static: true }) mapElement: ElementRef;
 
   constructor() {
     console.log("MapComponent::constructor");
-    this.initMap();
+  }
 
+  ngOnInit(): void {
+    console.log("MapComponent::ngOnInit");
+    this.initMap();
   }
 
   ngAfterContentInit(): void {
+    console.log("MapComponent::ngAfterContentInit");
+
     this.hideAttributions();
   }
 
@@ -31,48 +43,52 @@ export class MapComponent implements AfterContentInit {
     console.log("MapComponent::initMap");
 
     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(
+            `starting postion:  ${position.coords.latitude} - ${position.coords.longitude}`
+          );
 
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(`starting postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+          this.map = new google.maps.Map(this.mapElement.nativeElement, {
+            center: {
+              lat: 33.76057524016749,
+              lng: -84.36079368475487
+            },
+            zoom: 18,
+            heading: 360
+          });
 
-        this.map = new google.maps.Map(this.mapElement.nativeElement, {
-          center: {
-            lat: 33.76057524016749,
-            lng: -84.36079368475487
-          },
-          disableDefaultUI: true,
-          styles: this.getCustomStyle(),
-          zoom: 18
-        });
+          this.showPosition(position);
+        },
+        error => {
+          console.log(error);
+        },
+        this.options
+      );
 
-        this.showPosition(position);
-      },
-      (error) => {
-        console.log(error);
-      },
-      this.options);
-
-      navigator.geolocation.watchPosition((position) => {
-        console.log(`tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`);
+      navigator.geolocation.watchPosition(position => {
+        console.log(
+          `tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`
+        );
         this.showPosition(position);
       });
-
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
-
   }
 
   showPosition(position: Position) {
-
-    this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    this.location = new google.maps.LatLng(
+      position.coords.latitude,
+      position.coords.longitude
+    );
     this.map.panTo(this.location);
 
     if (!this.marker) {
       this.marker = new google.maps.Marker({
         position: this.location,
         map: this.map,
-        title: '@dhecking'
+        title: "@dhecking"
       });
     } else {
       this.marker.setPosition(this.location);
@@ -80,11 +96,11 @@ export class MapComponent implements AfterContentInit {
   }
 
   hideAttributions() {
-    const sleep = (milliseconds) => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
-    sleep(1500).then(() => {
-      const items = document.querySelectorAll('.gmnoprint');
+    const sleep = milliseconds => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds));
+    };
+    sleep(5000).then(() => {
+      const items = document.querySelectorAll(".gmnoprint");
       console.log("hideAttributionsRight: " + items.length);
 
       items.forEach(item => {
@@ -92,66 +108,13 @@ export class MapComponent implements AfterContentInit {
         element.style.display = "none";
       });
 
-      const items2 = document.querySelectorAll('[rel=noopener]');
+      const items2 = document.querySelectorAll("[rel=noopener]");
       console.log("hideAttributionsLeft: " + items2.length);
       items2.forEach(item => {
         const element = item as HTMLElement;
         element.style.display = "none";
       });
-    })
-
-
-  }
-
-  getMutedBlue() {
-    return [
-      {
-        featureType: "all",
-        stylers: [
-          {
-            saturation: 0
-          },
-          {
-            hue: "#e7ecf0"
-          }
-        ]
-      },
-      {
-        featureType: "road",
-        stylers: [
-          {
-            saturation: -70
-          }
-        ]
-      },
-      {
-        featureType: "transit",
-        stylers: [
-          {
-            visibility: "off"
-          }
-        ]
-      },
-      {
-        featureType: "poi",
-        stylers: [
-          {
-            visibility: "off"
-          }
-        ]
-      },
-      {
-        featureType: "water",
-        stylers: [
-          {
-            visibility: "simplified"
-          },
-          {
-            saturation: -60
-          }
-        ]
-      }
-    ];
+    });
   }
 
   getCustomStyle() {
