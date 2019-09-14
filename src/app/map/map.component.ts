@@ -1,42 +1,38 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  AfterContentInit
-} from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+
+declare var google: any;
+let map: any;
+let marker: any;
+let location: any;
+let watchPositionId: any;
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
-export class MapComponent implements OnInit, AfterContentInit {
-  google: any;
-  map: google.maps.Map;
-  marker: google.maps.Marker;
-  location: google.maps.LatLng;
-  options: PositionOptions = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
+export class MapComponent implements OnInit, OnDestroy {
 
-  @ViewChild("googlemaps", { static: true }) mapElement: ElementRef;
+  @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
 
   constructor() {
     console.log("MapComponent::constructor");
+    this.initMap();
+   // this.hideAttributions();
   }
 
   ngOnInit(): void {
     console.log("MapComponent::ngOnInit");
-    this.initMap();
   }
 
-  ngAfterContentInit(): void {
-    console.log("MapComponent::ngAfterContentInit");
-
-    this.hideAttributions();
+  ngOnDestroy(): void {
+    console.log("MapComponent::ngOnDestroy(" + watchPositionId + ")");
+    navigator.geolocation.clearWatch(watchPositionId);
   }
 
   initMap() {
@@ -45,61 +41,47 @@ export class MapComponent implements OnInit, AfterContentInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          console.log(
-            `starting postion:  ${position.coords.latitude} - ${position.coords.longitude}`
-          );
-
-          this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            center: {
-              lat: 33.76057524016749,
-              lng: -84.36079368475487
-            },
+          location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          map = new google.maps.Map(this.mapElement.nativeElement, {
+            center: location,
+            disableDefaultUI: true,
             zoom: 18,
-            heading: 360
+            styles: this.getCustomStyle()
           });
 
+          marker = new google.maps.Marker({
+            position: location,
+            map,
+            title: "@dhecking"
+          });
           this.showPosition(position);
         },
         error => {
-          console.log(error);
+          console.log("getPosition: " + error.message);
         },
-        this.options
+        options
       );
 
-      navigator.geolocation.watchPosition(position => {
-        console.log(
-          `tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}`
-        );
+      watchPositionId = navigator.geolocation.watchPosition(position => {
         this.showPosition(position);
-      });
+      }, error => {
+        console.log("watchPosition: " + error.message);
+      }, options);
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
 
   showPosition(position: Position) {
-    this.location = new google.maps.LatLng(
+    location = new google.maps.LatLng(
       position.coords.latitude,
       position.coords.longitude
     );
-    this.map.panTo(this.location);
-
-    if (!this.marker) {
-      this.marker = new google.maps.Marker({
-        position: this.location,
-        map: this.map,
-        title: "@dhecking"
-      });
-    } else {
-      this.marker.setPosition(this.location);
-    }
+    map.panTo(location);
+    marker.setPosition(location);
   }
 
   hideAttributions() {
-    const sleep = milliseconds => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds));
-    };
-    sleep(5000).then(() => {
       const items = document.querySelectorAll(".gmnoprint");
       console.log("hideAttributionsRight: " + items.length);
 
@@ -114,7 +96,6 @@ export class MapComponent implements OnInit, AfterContentInit {
         const element = item as HTMLElement;
         element.style.display = "none";
       });
-    });
   }
 
   getCustomStyle() {
