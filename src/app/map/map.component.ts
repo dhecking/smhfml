@@ -51,17 +51,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         position => {
           location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map = new google.maps.Map(this.mapElement.nativeElement, {
-            center: location,
-            disableDefaultUI: false,
-            zoomControl: false,
-            mapTypeControl: false,
-            streetViewControl: false,
-            rotateControl: false,
-            fullscreenControl: false,
-            gestureHandling: 'none',
             zoom: 18,
+            center: location,
+            disableDefaultUI: true,
+            gestureHandling: "none",
             styles: this.getCustomStyle()
           });
+          map.panTo(location);
 
           marker = new google.maps.Marker({
             position: location,
@@ -69,52 +65,45 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             icon: "assets/icons/navigation-50.png",
             map
           });
-          console.log(marker);
-          this.showPosition(position);
+          marker.setPosition(location);
+
         },
         error => {
-          console.log("getPosition: " + error.message);
+          console.error("MapComponent: " + error.message);
         },
         options
       );
 
-      watchPositionId = navigator.geolocation.watchPosition(position => {
-        this.showPosition(position);
-      }, error => {
-        console.log("watchPosition: " + error.message);
-      }, options);
-    } else {
-      console.log("Geolocation is not supported by this browser.");
+      watchPositionId = navigator.geolocation.watchPosition(
+        position => {
+          location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          map.panTo(location);
+          marker.setPosition(location);
+        },
+        error => {
+          console.error("MapComponent: " + error.message);
+        },
+        options
+      );
     }
   }
 
-  showPosition(position: Position) {
-    location = new google.maps.LatLng(
-      position.coords.latitude,
-      position.coords.longitude
-    );
-    map.panTo(location);
-    marker.setPosition(location);
-  }
-
   hideAttributions() {
+    console.log("MapComponent::hideAttributions");
     this.sleep(1500).then(() => {
       const items = document.querySelectorAll(".gmnoprint");
-      console.log("hideAttributionsRight: " + items.length);
-
+      // console.log("hideAttributionsRight: " + items.length);
       items.forEach(item => {
         const element = item as HTMLElement;
         element.style.display = "none";
       });
-
       const items2 = document.querySelectorAll("[rel=noopener]");
-      console.log("hideAttributionsLeft: " + items2.length);
+      // console.log("hideAttributionsLeft: " + items2.length);
       items2.forEach(item => {
         const element = item as HTMLElement;
         element.style.display = "none";
       });
     });
-
   }
 
   getCustomStyle() {
