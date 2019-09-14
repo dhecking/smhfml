@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from "@angular/core";
+import { Component, ViewChild, AfterContentInit, ElementRef } from "@angular/core";
 
 declare var google: any;
 
@@ -9,7 +9,7 @@ const iconBase = "https://maps.google.com/mapfiles/ms/icons/";
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
-export class MapComponent {
+export class MapComponent implements AfterContentInit {
   map: google.maps.Map;
   marker: google.maps.Marker;
   location: google.maps.LatLng;
@@ -20,6 +20,11 @@ export class MapComponent {
   constructor() {
     console.log("MapComponent::constructor");
     this.initMap();
+
+  }
+
+  ngAfterContentInit(): void {
+    this.hideAttributions();
   }
 
   initMap() {
@@ -72,6 +77,30 @@ export class MapComponent {
     } else {
       this.marker.setPosition(this.location);
     }
+  }
+
+  hideAttributions() {
+    const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+    sleep(1500).then(() => {
+      const items = document.querySelectorAll('.gmnoprint');
+      console.log("hideAttributionsRight: " + items.length);
+
+      items.forEach(item => {
+        const element = item as HTMLElement;
+        element.style.display = "none";
+      });
+
+      const items2 = document.querySelectorAll('[rel=noopener]');
+      console.log("hideAttributionsLeft: " + items2.length);
+      items2.forEach(item => {
+        const element = item as HTMLElement;
+        element.style.display = "none";
+      });
+    })
+
+
   }
 
   getMutedBlue() {
