@@ -4,6 +4,9 @@ declare var google: any;
 let map: any;
 let marker: any;
 let location: any;
+let speed: number;
+let heading: number;
+let altitude: number;
 let watchPositionId: any;
 const options = {
   enableHighAccuracy: true,
@@ -55,7 +58,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             center: location,
             disableDefaultUI: true,
             gestureHandling: "none",
-            styles: this.getCustomStyle()
+            styles: this.getCustomStyle(),
+            heading
           });
           map.panTo(location);
 
@@ -79,12 +83,20 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map.panTo(location);
           marker.setPosition(location);
+          speed = parseInt(Math.round(position.coords.speed).toFixed(0), 2);
+          heading = parseInt(Math.round(position.coords.heading).toFixed(0), 2);
+          altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 2);
+          document.getElementById("speed").innerText = speed + "";
+          document.getElementById("heading").innerText = heading + "";
+          document.getElementById("altitude").innerText = altitude + "";
         },
         error => {
           console.error("MapComponent: " + error.message);
         },
         options
       );
+
+
     }
   }
 

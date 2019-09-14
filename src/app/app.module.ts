@@ -21,6 +21,7 @@ import { ErrorComponent } from './error/error.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'map', component: MapComponent },
@@ -54,11 +55,13 @@ const appRoutes: Routes = [
     SidenavComponent,
     GridComponent,
     MapComponent,
-    SidenavComponent
+    SidenavComponent,
+    FooterComponent
   ],
   bootstrap: [AppComponent],
   schemas: [
     NO_ERRORS_SCHEMA // IMPORTANT: need that for AoT compilation
-  ]
+  ],
+  exports: [FooterComponent]
 })
 export class AppModule {}
