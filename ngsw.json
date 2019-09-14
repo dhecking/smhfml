@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1568409282269,
+  "timestamp": 1568426050040,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.bd979d927c53867cb322.js",
-        "/main-es5.bd979d927c53867cb322.js",
+        "/main-es2015.dd364fff0db1b5d47bc2.js",
+        "/main-es5.dd364fff0db1b5d47bc2.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.1143b795f1c102f3524e.js",
         "/polyfills-es5.3639dc46cb4dab825d64.js",
@@ -59,6 +59,7 @@
         "/assets/3d/izzy/textures/short_jeans_baseColor.png",
         "/assets/3d/izzy/textures/short_jeans_normal.png",
         "/assets/3d/orb-1.glb",
+        "/assets/3d/orb-1_report.json",
         "/assets/3d/orb-2.glb",
         "/assets/3d/orb-3.glb",
         "/assets/icons/icon-128x128.png",
@@ -109,6 +110,7 @@
     "/assets/3d/izzy/textures/short_jeans_baseColor.png": "c1deb4e33da6b0d3d4067f95c2b4179843a853bc",
     "/assets/3d/izzy/textures/short_jeans_normal.png": "6fd9057083d013af965e119758d61b4a09797ba3",
     "/assets/3d/orb-1.glb": "5d7f02fd30c8ded4b61587453d4ee76ea25fa8d4",
+    "/assets/3d/orb-1_report.json": "51f2f3de1004d5677a05c360b41dafeb3987af80",
     "/assets/3d/orb-2.glb": "bcfef57e520d7853b28915de1054559d866b2a42",
     "/assets/3d/orb-3.glb": "d0ffac861a5ca743b6e2265fbe288103218a06a1",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
@@ -121,9 +123,9 @@
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/pictures/geometry.jpg": "b4848117c8700a7e133ba215cf6d867b69a9e97e",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "3543788d2d6ae125c5b1f07011732ae98590d678",
-    "/main-es2015.bd979d927c53867cb322.js": "65b5005d01d5a26ccd52550703458087d3d48b2e",
-    "/main-es5.bd979d927c53867cb322.js": "19c4d98c1749ff2f5eb53f58a8ccdf4e763ebb24",
+    "/index.html": "ac4f94a24349eec7c35c5a540ff4ef2fc0eefd69",
+    "/main-es2015.dd364fff0db1b5d47bc2.js": "0518051306039b9d448d678f6939935838b612fe",
+    "/main-es5.dd364fff0db1b5d47bc2.js": "b777c52e988fffa4550e418f689283bcc5c69349",
     "/manifest.webmanifest": "e7ac3982fb36e739434406ec968e198716748d22",
     "/polyfills-es2015.1143b795f1c102f3524e.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
     "/polyfills-es5.3639dc46cb4dab825d64.js": "db091f7ef692a1d3add240459a2ea20c81cd6f19",
