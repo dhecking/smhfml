@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 declare var google: any;
 let map: any;
@@ -16,18 +16,26 @@ const options = {
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
-export class MapComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
 
   constructor() {
     console.log("MapComponent::constructor");
-    this.initMap();
-   // this.hideAttributions();
+  }
+
+  sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
 
   ngOnInit(): void {
     console.log("MapComponent::ngOnInit");
+    this.initMap();
+  }
+
+  ngAfterViewInit(): void {
+    console.log("MapComponent::ngAfterViewInit");
+    this.hideAttributions();
   }
 
   ngOnDestroy(): void {
@@ -44,16 +52,24 @@ export class MapComponent implements OnInit, OnDestroy {
           location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map = new google.maps.Map(this.mapElement.nativeElement, {
             center: location,
-            disableDefaultUI: true,
+            disableDefaultUI: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: false,
+            gestureHandling: 'none',
             zoom: 18,
             styles: this.getCustomStyle()
           });
 
           marker = new google.maps.Marker({
             position: location,
-            map,
-            title: "@dhecking"
+            title: "@dhecking",
+            icon: "assets/icons/navigation-50.png",
+            map
           });
+          console.log(marker);
           this.showPosition(position);
         },
         error => {
@@ -82,6 +98,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   hideAttributions() {
+    this.sleep(1500).then(() => {
       const items = document.querySelectorAll(".gmnoprint");
       console.log("hideAttributionsRight: " + items.length);
 
@@ -96,6 +113,8 @@ export class MapComponent implements OnInit, OnDestroy {
         const element = item as HTMLElement;
         element.style.display = "none";
       });
+    });
+
   }
 
   getCustomStyle() {
