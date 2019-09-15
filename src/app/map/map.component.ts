@@ -26,10 +26,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log("MapComponent::constructor");
   }
 
-  sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-
   ngOnInit(): void {
     console.log("MapComponent::ngOnInit");
     this.initMap();
@@ -101,20 +97,20 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   hideAttributions() {
     console.log("MapComponent::hideAttributions");
-    this.sleep(1500).then(() => {
-      const items = document.querySelectorAll(".gmnoprint");
-      // console.log("hideAttributionsRight: " + items.length);
-      items.forEach(item => {
-        const element = item as HTMLElement;
-        element.style.display = "none";
-      });
-      const items2 = document.querySelectorAll("[rel=noopener]");
-      // console.log("hideAttributionsLeft: " + items2.length);
-      items2.forEach(item => {
-        const element = item as HTMLElement;
-        element.style.display = "none";
-      });
+
+    const items = document.querySelectorAll(".gmnoprint");
+    // console.log("hideAttributionsRight: " + items.length);
+    items.forEach(item => {
+      const element = item as HTMLElement;
+      element.style.display = "none";
     });
+    const items2 = document.querySelectorAll("[rel=noopener]");
+    // console.log("hideAttributionsLeft: " + items2.length);
+    items2.forEach(item => {
+      const element = item as HTMLElement;
+      element.style.display = "none";
+    });
+
   }
 
   getCustomStyle(): any {
