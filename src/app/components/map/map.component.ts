@@ -48,6 +48,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map = new google.maps.Map(this.mapElement.nativeElement, {
             zoom: 18,
+            backgroundColor: "#1d2c4d",
+            noClear: true,
             center: this.location,
             disableDefaultUI: true,
             rotateControl: true,
@@ -60,7 +62,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.marker = new google.maps.Marker({
             position: this.location,
             title: "@dhecking",
-            icon: "assets/icons/navigation-50.png",
+            icon: "assets/icons/navigation.svg",
             map: this.map
           });
 
