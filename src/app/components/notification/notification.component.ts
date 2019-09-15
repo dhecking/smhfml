@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 
-import { WebNotificationService } from '../services/web-notification.service';
+import { WebNotificationService } from '../../services/web-notification.service';
 
 @Component({
   selector: 'app-notification-button',

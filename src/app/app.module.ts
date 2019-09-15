@@ -1,5 +1,11 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../environments/environment';
+
 import { MatIconModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,28 +14,18 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { RouterModule, Routes } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { MapComponent } from './map/map.component';
-// import { GltfComponent } from './gltf/gltf.component';
-import { GridComponent } from './grid/grid.component';
-import { ErrorComponent } from './error/error.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { FooterComponent } from './footer/footer.component';
-import { NotificationComponent } from './components/notification.component';
-
-
 import { WebNotificationService } from './services/web-notification.service';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+
+import { AppComponent } from './components/app.component';
+import { MapComponent } from './components/map/map.component';
+import { GridComponent } from './components/grid/grid.component';
+import { ErrorComponent } from './components/error/error.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const appRoutes: Routes = [
   { path: 'map', component: MapComponent },
-  // { path: '3d', component: GltfComponent },
   { path: 'grid', component: GridComponent },
   { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }
@@ -54,7 +50,6 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
-    // GltfComponent,
     ErrorComponent,
     SidenavComponent,
     GridComponent,
@@ -63,7 +58,7 @@ const appRoutes: Routes = [
     FooterComponent,
     NotificationComponent
   ],
-  providers:[
+  providers: [
     WebNotificationService
   ],
   bootstrap: [AppComponent],

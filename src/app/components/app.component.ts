@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import * as firebase from 'firebase/app';
 // import 'firebase/<PACKAGE>'
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 const config = {
   apiKey: environment.firebaseApiKey,
