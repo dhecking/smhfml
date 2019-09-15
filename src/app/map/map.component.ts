@@ -4,10 +4,10 @@ declare var google: any;
 let map: any;
 let marker: any;
 let location: any;
-let speed: number;
-let heading: number;
-let altitude: number;
-let watchPositionId: any;
+let speed: string;
+let heading: string;
+let altitude: string;
+let watchPositionId: number;
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -58,6 +58,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             center: location,
             disableDefaultUI: true,
             gestureHandling: "none",
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
             styles: this.getCustomStyle(),
             heading
           });
@@ -83,12 +84,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map.panTo(location);
           marker.setPosition(location);
-          speed = parseInt(Math.round(position.coords.speed).toFixed(0), 2);
-          heading = parseInt(Math.round(position.coords.heading).toFixed(0), 2);
-          altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 2);
-          document.getElementById("speed").innerText = speed + "";
-          document.getElementById("heading").innerText = heading + "";
-          document.getElementById("altitude").innerText = altitude + "";
+          speed = Math.round(position.coords.speed).toFixed(0);
+          heading = Math.round(position.coords.heading).toFixed(0);
+          altitude = Math.round(position.coords.altitude).toFixed(0);
+          document.getElementById("speed").innerText = speed;
+          document.getElementById("heading").innerText = heading;
+          document.getElementById("altitude").innerText = altitude;
         },
         error => {
           console.error("MapComponent: " + error.message);
