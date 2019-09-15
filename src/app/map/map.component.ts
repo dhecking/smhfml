@@ -1,12 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
-  google: any;
   map: any;
   marker: any;
   location: any;
