@@ -53,7 +53,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             rotateControl: true,
             gestureHandling: "none",
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            heading: 180,
             styles: this.getCustomStyle()
           });
           this.map.panTo(this.location);
@@ -77,12 +76,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map.panTo(this.location);
           this.marker.setPosition(this.location);
-          this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
-          this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
-          this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
-          document.getElementById("speed").innerText = this.speed + "";
-          document.getElementById("heading").innerText = this.heading + "";
-          document.getElementById("altitude").innerText = this.altitude + "";
+          this.updateDashboard(position);
         },
         error => {
           console.error("MapComponent: " + error.message);
@@ -90,6 +84,15 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         this.options
       );
     }
+  }
+
+  updateDashboard(position: any){
+    this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
+    this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
+    this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
+    document.getElementById("speed").innerText = this.speed + "";
+    document.getElementById("heading").innerText = this.heading + "";
+    document.getElementById("altitude").innerText = this.altitude + "";
   }
 
   hideAttributions() {
