@@ -1,10 +1,10 @@
-// server.js
-require('dotenv').config({ path: 'variables.env' });
+const dotenv = require("dotenv");
+dotenv.config({ path: ".env" });
 
-const express = require('express');
-const cors = require('cors')
-const webPush = require('web-push');
-const bodyParser = require('body-parser');
+const express = require("express");
+const cors = require("cors");
+const webPush = require("web-push");
+const bodyParser = require("body-parser");
 
 const app = express();
 
