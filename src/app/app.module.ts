@@ -25,9 +25,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationComponent } from './components/notification/notification.component';
 
 const appRoutes: Routes = [
+  { path: '', component: MapComponent },
   { path: 'map', component: MapComponent },
   { path: 'grid', component: GridComponent },
-  { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }
 ];
 
