@@ -18,10 +18,14 @@ import { MapComponent } from './map/map.component';
 // import { GltfComponent } from './gltf/gltf.component';
 import { GridComponent } from './grid/grid.component';
 import { ErrorComponent } from './error/error.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotificationComponent } from './components/notification.component';
+
+
+import { WebNotificationService } from './services/web-notification.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: 'map', component: MapComponent },
@@ -56,7 +60,11 @@ const appRoutes: Routes = [
     GridComponent,
     MapComponent,
     SidenavComponent,
-    FooterComponent
+    FooterComponent,
+    NotificationComponent
+  ],
+  providers:[
+    WebNotificationService
   ],
   bootstrap: [AppComponent],
   schemas: [

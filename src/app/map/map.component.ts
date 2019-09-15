@@ -1,25 +1,24 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
-declare var google: any;
-let map: any;
-let marker: any;
-let location: any;
-let speed: string;
-let heading: string;
-let altitude: string;
-let watchPositionId: number;
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
-
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
+  google: any;
+  map: any;
+  marker: any;
+  location: any;
+  speed: number;
+  heading: number;
+  altitude: number;
+  watchPositionId: number;
+  options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
 
   @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
 
@@ -42,8 +41,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("MapComponent::ngOnDestroy(" + watchPositionId + ")");
-    navigator.geolocation.clearWatch(watchPositionId);
+    console.log("MapComponent::ngOnDestroy(" + this.watchPositionId + ")");
+    navigator.geolocation.clearWatch(this.watchPositionId);
   }
 
   initMap() {
@@ -52,49 +51,48 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-          map = new google.maps.Map(this.mapElement.nativeElement, {
-            zoom: 18,
-            center: location,
+          this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          this.map = new google.maps.Map(this.mapElement.nativeElement, {
+            zoom: 20,
+            center: this.location,
             disableDefaultUI: true,
             gestureHandling: "none",
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: this.getCustomStyle(),
-            heading
+            heading: this.heading,
+            styles: this.getCustomStyle()
           });
-          map.panTo(location);
+          this.map.panTo(this.location);
 
-          marker = new google.maps.Marker({
-            position: location,
+          this.marker = new google.maps.Marker({
+            position: this.location,
             title: "@dhecking",
             icon: "assets/icons/navigation-50.png",
-            map
+            map: this.map
           });
-          marker.setPosition(location);
 
         },
         error => {
           console.error("MapComponent: " + error.message);
         },
-        options
+        this.options
       );
 
-      watchPositionId = navigator.geolocation.watchPosition(
+      this.watchPositionId = navigator.geolocation.watchPosition(
         position => {
-          location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-          map.panTo(location);
-          marker.setPosition(location);
-          speed = Math.round(position.coords.speed).toFixed(0);
-          heading = Math.round(position.coords.heading).toFixed(0);
-          altitude = Math.round(position.coords.altitude).toFixed(0);
-          document.getElementById("speed").innerText = speed;
-          document.getElementById("heading").innerText = heading;
-          document.getElementById("altitude").innerText = altitude;
+          this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          this.map.panTo(this.location);
+          this.marker.setPosition(this.location);
+          this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
+          this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
+          this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
+          document.getElementById("speed").innerText = this.speed + "";
+          document.getElementById("heading").innerText = this.heading + "";
+          document.getElementById("altitude").innerText = this.altitude + "";
         },
         error => {
           console.error("MapComponent: " + error.message);
         },
-        options
+        this.options
       );
 
 
@@ -119,7 +117,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  getCustomStyle() {
+  getCustomStyle(): any {
     return [
       {
         elementType: "geometry",
