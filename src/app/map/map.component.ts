@@ -21,7 +21,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
 
   constructor() {
-    console.log("MapComponent::constructor");
+
   }
 
   ngOnInit(): void {
@@ -47,12 +47,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         position => {
           this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            zoom: 20,
+            zoom: 18,
             center: this.location,
             disableDefaultUI: true,
+            rotateControl: true,
             gestureHandling: "none",
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            heading: this.heading,
+            heading: 180,
             styles: this.getCustomStyle()
           });
           this.map.panTo(this.location);
@@ -88,28 +89,30 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         this.options
       );
-
-
     }
   }
 
   hideAttributions() {
     console.log("MapComponent::hideAttributions");
-
-    const items = document.querySelectorAll(".gmnoprint");
-    // console.log("hideAttributionsRight: " + items.length);
-    items.forEach(item => {
-      const element = item as HTMLElement;
-      element.style.display = "none";
+    const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds));
+    };
+    sleep(1500).then(() => {
+      const items = document.querySelectorAll(".gmnoprint");
+      // console.log("hideAttributionsRight: " + items.length);
+      items.forEach(item => {
+        const element = item as HTMLElement;
+        element.style.display = "none";
+      });
+      const items2 = document.querySelectorAll("[rel=noopener]");
+      // console.log("hideAttributionsLeft: " + items2.length);
+      items2.forEach(item => {
+        const element = item as HTMLElement;
+        element.style.display = "none";
+      });
     });
-    const items2 = document.querySelectorAll("[rel=noopener]");
-    // console.log("hideAttributionsLeft: " + items2.length);
-    items2.forEach(item => {
-      const element = item as HTMLElement;
-      element.style.display = "none";
-    });
-
   }
+
 
   getCustomStyle(): any {
     return [
