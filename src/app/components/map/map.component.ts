@@ -62,7 +62,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.marker = new google.maps.Marker({
             position: this.location,
             title: "@dhecking",
-            icon: "assets/icons/navigation.svg",
+            icon: "assets/icons/angular-maps.svg",
             map: this.map
           });
 
