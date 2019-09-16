@@ -1,15 +1,11 @@
 html,
 body {
-  height: 100%;
   margin: 0;
-  padding: 0;
-}
-
-body {
+  height: 100vh;
+  overscroll-behavior-y: contain;
   font-family: Roboto, Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
   width: 0px;
 }
-

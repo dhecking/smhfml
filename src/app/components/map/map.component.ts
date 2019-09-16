@@ -31,7 +31,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     console.log("MapComponent::ngAfterViewInit");
-    this.hideAttributions();
+    // this.hideAttributions();
   }
 
   ngOnDestroy(): void {
