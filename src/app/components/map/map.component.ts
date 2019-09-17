@@ -7,6 +7,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } fr
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   map: any;
   marker: any;
+  navicon: any;
   location: any;
   speed: number;
   heading: number;
@@ -61,9 +62,14 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
           this.marker = new google.maps.Marker({
             position: this.location,
-            title: "@dhecking",
-            icon: "assets/icons/angular-maps.svg",
+            title: "Dirck Hecking",
+            icon: this.navicon,
             map: this.map
+          });
+
+          this.marker.addListener('click', () => {
+            console.log("MapComponent::toggleBounce");
+            this.toggleBounce(this.marker);
           });
 
         },
@@ -78,6 +84,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map.panTo(this.location);
           this.marker.setPosition(this.location);
+          this.marker.setIcon(this.getSymbol());
           this.updateDashboard(position);
         },
         error => {
@@ -85,7 +92,30 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         this.options
       );
+
     }
+  }
+
+  toggleBounce(marker: google.maps.Marker) {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
+  getSymbol(): google.maps.Symbol {
+    const symbol = {
+      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      fillColor: "#bff",
+      fillOpacity: 0.8,
+      scale: 10,
+      rotation: this.heading,
+      strokeColor: '#4cf',
+      strokeWeight: 2
+    };
+    return symbol;
+
   }
 
   updateDashboard(position: any) {

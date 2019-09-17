@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     MatGridListModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
+      { enableTracing: false } // debugging purposes only
     ),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

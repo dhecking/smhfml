@@ -8,5 +8,8 @@ export const environment = {
   firebaseAuthDomain: "alien-outrider-213710.firebaseapp.com",
   firebaseDatabaseURL: "https://alien-outrider-213710.firebaseio.com/",
   firebaseProjectId: "alien-outrider-213710",
-  firebaseStorageBucket: "gs://alien-outrider-213710.appspot.com"
+  firebaseStorageBucket: "gs://alien-outrider-213710.appspot.com",
+
+  pubnubPublishKey: "pub-c-d6884608-953e-4f02-906b-c9c742cf0cd3",
+  pubnubSubscribeKey: "sub-c-c3c303ea-d94d-11e9-9067-a65ad2c362ff"
 };
