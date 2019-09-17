@@ -46,8 +46,7 @@ export class GltfComponent implements AfterContentInit {
       camera.updateProjectionMatrix();
     });
 
-    // const izzy = 'assets/3d/izzy/scene.gltf';
-    const orb = 'assets/3d/orb-1.glb';
+    const orb = 'assets/gltf/orb-1.glb';
     const loader = new GLTFLoader();
     let mesh: THREE.Scene | THREE.Object3D;
     loader.load(orb, gltf => {

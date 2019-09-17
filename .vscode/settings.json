@@ -1,0 +1,58 @@
+{
+  "breadcrumbs.enabled": false,
+
+  "editor.cursorBlinking": "blink",
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontWeight": "300",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.folding": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelScrollSensitivity": 3,
+  "editor.mouseWheelZoom": true,
+  "editor.tabSize": 4,
+  "editor.wordWrapColumn": 180,
+
+  "explorer.decorations.colors": false,
+
+  "files.autoSave": "afterDelay",
+
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "gitHistory.showEditorTitleMenuBarIcons": false,
+
+  "prettier.disableLanguages": [],
+  "prettier.bracketSpacing": false,
+  "prettier.printWidth": 180,
+  "prettier.tabWidth": 4,
+
+  "scm.diffDecorations": "none",
+
+  "svgviewer.enableautopreview": false,
+  "svgviewer.showzoominout": false,
+  "svgviewer.transparencygrid": false,
+
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "vsicons.dontShowNewVersionMessage": false,
+  "vsicons.presets.angular": true,
+  "vsicons.projectDetection.autoReload": true,
+
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Dark+ Material",
+  "workbench.iconTheme": "vscode-icons",
+  "json.format.enable": false,
+  "vsicons.presets.hideExplorerArrows": true,
+  "workbench.tree.indent": 18,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.editor.revealIfOpen": true,
+  "ngschematics.schematics": [
+    "@angular/material"
+  ],
+  "outline.icons": false,
+  "scm.providers.visible": 0,
+  "terminal.integrated.copyOnSelection": true,
+  "problems.decorations.enabled": true,
+}
