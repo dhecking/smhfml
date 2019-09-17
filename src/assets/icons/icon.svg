@@ -1,8 +1,8 @@
-<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+<svg height="32" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
   <path
     d="m10 40 15-30 15 30-15-10-15 10z"
     fill="#bff" stroke="#4cf"
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="2"/>
- </svg>
+</svg>

@@ -68,8 +68,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           });
 
           this.marker.addListener('click', () => {
-            console.log("MapComponent::toggleBounce");
-            this.toggleBounce(this.marker);
+            // console.log("MapComponent::toggleBounce");
+            // this.bounceMarker(this.marker);
+            // this.rotateSymbol(this.marker);
           });
 
         },
@@ -78,6 +79,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         this.options
       );
+      console.log("MapComponent.location: " + this.location);
 
       this.watchPositionId = navigator.geolocation.watchPosition(
         position => {
@@ -96,7 +98,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  toggleBounce(marker: google.maps.Marker) {
+  bounceMarker(marker: google.maps.Marker) {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
     } else {

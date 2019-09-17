@@ -32,7 +32,6 @@
 
   "svgviewer.enableautopreview": false,
   "svgviewer.showzoominout": false,
-  "svgviewer.transparencygrid": false,
 
   "typescript.updateImportsOnFileMove.enabled": "always",
 
@@ -40,7 +39,7 @@
   "vsicons.presets.angular": true,
   "vsicons.projectDetection.autoReload": true,
 
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "workbench.colorTheme": "Dark+ Material",
   "workbench.iconTheme": "vscode-icons",
   "json.format.enable": false,
@@ -55,4 +54,6 @@
   "scm.providers.visible": 0,
   "terminal.integrated.copyOnSelection": true,
   "problems.decorations.enabled": true,
+  "svgviewer.transparencycolor": "white",
+  "svgviewer.transparencygrid": true,
 }
