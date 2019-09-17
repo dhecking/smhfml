@@ -88,7 +88,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  updateDashboard(position: any){
+  updateDashboard(position: any) {
     this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
     this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
     this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
