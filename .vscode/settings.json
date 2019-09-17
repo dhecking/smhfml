@@ -16,7 +16,7 @@
 
   "explorer.decorations.colors": false,
 
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
 
   "git.autofetch": true,
   "git.confirmSync": false,
