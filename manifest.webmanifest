@@ -10,42 +10,42 @@
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "72x72",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "96x96",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "128x128",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "144x144",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "152x152",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "192x192",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "384x384",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     },
     {
       "src": "assets/icons/angular-maps.svg",
       "sizes": "512x512",
-      "type": "application/svg+xml"
+      "type": "image/svg+xml"
     }
   ]
 }
