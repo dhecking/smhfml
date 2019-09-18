@@ -14,6 +14,7 @@ export class NotificationComponent {
 
   constructor(private swPush: SwPush, private webNotificationService: WebNotificationService) {
     console.log("NotificationComponent::constructor()", swPush, webNotificationService);
+    this.submitNotification();
   }
 
   submitNotification(): void {

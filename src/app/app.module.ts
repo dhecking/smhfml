@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
+import { PubnubService } from './services/pubnub.service';
 import { WebNotificationService } from './services/web-notification.service';
 
 import { AppComponent } from './components/app.component';
@@ -23,11 +24,12 @@ import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', component: MapComponent },
   { path: 'map', component: MapComponent },
-  { path: 'grid', component: GridComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: '**', component: ErrorComponent }
 ];
 
@@ -56,9 +58,11 @@ const appRoutes: Routes = [
     MapComponent,
     SidenavComponent,
     FooterComponent,
-    NotificationComponent
+    NotificationComponent,
+    SettingsComponent
   ],
   providers: [
+    PubnubService,
     WebNotificationService
   ],
   bootstrap: [AppComponent],

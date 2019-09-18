@@ -5,10 +5,9 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } fr
   styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
-  map: any;
-  marker: any;
-  navicon: any;
-  location: any;
+  map: google.maps.Map;
+  marker: google.maps.Marker;
+  location: google.maps.LatLng;
   speed: number;
   heading: number;
   altitude: number;
@@ -58,12 +57,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             styles: this.getCustomStyle()
           });
-          this.map.panTo(this.location);
+          this.map.setCenter(this.location);
 
           this.marker = new google.maps.Marker({
             position: this.location,
             title: "Dirck Hecking",
-            icon: this.navicon,
+            icon: this.getSymbol(),
             map: this.map
           });
 

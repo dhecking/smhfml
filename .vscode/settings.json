@@ -2,10 +2,9 @@
   "breadcrumbs.enabled": false,
 
   "editor.cursorBlinking": "blink",
-  "editor.fontFamily": "Fira Code",
-  "editor.fontWeight": "300",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 15,
+  "editor.fontFamily": "Consolas",
+  "editor.fontLigatures": false,
+  "editor.fontSize": 14,
   "editor.folding": false,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.enabled": false,
@@ -16,7 +15,7 @@
 
   "explorer.decorations.colors": false,
 
-  "files.autoSave": "off",
+  "files.autoSave": "onFocusChange",
 
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -39,7 +38,7 @@
   "vsicons.presets.angular": true,
   "vsicons.projectDetection.autoReload": true,
 
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "workbench.colorTheme": "Dark+ Material",
   "workbench.iconTheme": "vscode-icons",
   "json.format.enable": false,
