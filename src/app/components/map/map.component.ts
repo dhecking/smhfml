@@ -9,15 +9,18 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } fr
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   map: google.maps.Map;
   marker: google.maps.Marker;
-  location: google.maps.LatLng;
-  speed: number;
-  heading: number;
-  altitude: number;
+
+  geoLocation: google.maps.LatLng;
+  geoSpeed: number;
+  geoHeading: number;
+  geoAltitude: number;
 
   deviceAbsolute: boolean = true;
   deviceBank: number = 0;
   devicePitch: number = 0;
   deviceDirection: number = 0;
+  deviceHeading: number = 0;
+  deviceHeadingAccuracy: number = 0;
 
   watchPositionId: number;
   options = {
@@ -53,31 +56,28 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map = new google.maps.Map(this.mapElement.nativeElement, {
             zoom: 18,
             backgroundColor: "#1d2c4d",
             noClear: true,
-            center: this.location,
+            center: this.geoLocation,
             disableDefaultUI: true,
             rotateControl: true,
             gestureHandling: "none",
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             styles: this.getCustomStyle()
           });
-          this.map.setCenter(this.location);
 
           this.marker = new google.maps.Marker({
-            position: this.location,
+            position: this.geoLocation,
             title: "Dirck Hecking",
             icon: this.getSymbol(),
             map: this.map
           });
 
           this.marker.addListener('click', () => {
-            // console.log("MapComponent::toggleBounce");
-            // this.bounceMarker(this.marker);
-            // this.rotateSymbol(this.marker);
+            console.log("MapComponent.marker::click()");
           });
 
         },
@@ -86,13 +86,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         this.options
       );
-      console.log("MapComponent.location: " + this.location);
 
       this.watchPositionId = navigator.geolocation.watchPosition(
         position => {
-          this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-          this.map.panTo(this.location);
-          this.marker.setPosition(this.location);
+          this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          this.map.panTo(this.geoLocation);
+          this.marker.setPosition(this.geoLocation);
           this.updateDashboard(position);
         },
         error => {
@@ -123,7 +122,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       fillColor: "#bff",
       fillOpacity: 0.8,
       scale: 10,
-      rotation: this.deviceDirection,
+      rotation: this.deviceHeading,
       strokeColor: '#4cf',
       strokeWeight: 2
     };
@@ -132,12 +131,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   updateDashboard(position: Position) {
-    this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
-    this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
-    this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
-    document.getElementById("speed").innerText = this.speed + "";
-    document.getElementById("heading").innerText = this.heading + "";
-    document.getElementById("altitude").innerText = this.altitude + "";
+    this.geoSpeed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
+    this.geoHeading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
+    this.geoAltitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
+    document.getElementById("geoSpeed").innerText = this.geoSpeed + "";
+    document.getElementById("geoHeading").innerText = this.geoHeading + "";
+    document.getElementById("geoAltitude").innerText = this.geoAltitude + "";
   }
 
   displayDeviceOrientation(event: DeviceOrientationEvent) {
@@ -145,9 +144,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deviceBank = parseInt(Math.round(event.alpha).toFixed(0), 10);
     this.devicePitch = parseInt(Math.round(event.beta).toFixed(0), 10);
     this.deviceDirection = parseInt(Math.round(event.gamma).toFixed(0), 10);
-    document.getElementById("bank").innerText = this.deviceBank + "";
-    document.getElementById("pitch").innerText = this.devicePitch + "";
-    document.getElementById("direction").innerText = this.deviceDirection + "";
+    document.getElementById("deviceDirection").innerText = this.deviceDirection + "";
+    document.getElementById("deviceHeading").innerText = this.deviceHeading + "";
   }
 
   hideAttributions() {

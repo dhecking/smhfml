@@ -1,12 +1,12 @@
 {
   "name": "Angular Maps",
   "short_name": "Angular Maps",
-  "description": "",
+  "description": "Traditionally Modern",
   "theme_color": "#1d2c4d",
   "background_color": "#1d2c4d",
   "display": "fullscreen",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/?utm_source=a2hs",
   "icons": [
     {
       "src": "assets/icons/icon-16.png",
