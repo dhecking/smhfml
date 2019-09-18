@@ -2,10 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": ["googlemaps"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "types": ["googlemaps"]
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["src/**/*.ts"],

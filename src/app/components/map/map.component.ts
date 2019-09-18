@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
-import * as bluemoon from './styles/bluemoon.json';
-
 const MapOpts: google.maps.MapOptions = {
   disableDefaultUI: true,
   gestureHandling: "none",
@@ -9,7 +7,6 @@ const MapOpts: google.maps.MapOptions = {
   zoom: 18,
   backgroundColor: "#1d2c4d",
   noClear: true,
-  // styles: bluemoon
 };
 
 const SymOpts: google.maps.Symbol = {
