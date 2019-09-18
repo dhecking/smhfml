@@ -142,9 +142,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   displayDeviceOrientation(event: DeviceOrientationEvent) {
     this.deviceAbsolute = event.absolute || false;
-    this.deviceBank = event.gamma || 0;
-    this.devicePitch = event.beta || 0;
-    this.deviceDirection = event.alpha || 0;
+    this.deviceBank = parseInt(Math.round(event.alpha).toFixed(0), 10);
+    this.devicePitch = parseInt(Math.round(event.beta).toFixed(0), 10);
+    this.deviceDirection = parseInt(Math.round(event.gamma).toFixed(0), 10);
     document.getElementById("bank").innerText = this.deviceBank + "";
     document.getElementById("pitch").innerText = this.devicePitch + "";
     document.getElementById("direction").innerText = this.deviceDirection + "";
