@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+
+
 @Component({
   selector: "app-map",
   templateUrl: "./map.component.html",
@@ -11,6 +13,12 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   speed: number;
   heading: number;
   altitude: number;
+
+  deviceAbsolute: boolean = true;
+  deviceBank: number = 0;
+  devicePitch: number = 0;
+  deviceDirection: number = 0;
+
   watchPositionId: number;
   options = {
     enableHighAccuracy: true,
@@ -85,7 +93,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           this.location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           this.map.panTo(this.location);
           this.marker.setPosition(this.location);
-          this.marker.setIcon(this.getSymbol());
           this.updateDashboard(position);
         },
         error => {
@@ -93,6 +100,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         this.options
       );
+
+      window.addEventListener('deviceorientation', (event: DeviceOrientationEvent) => {
+        this.marker.setIcon(this.getSymbol());
+        this.displayDeviceOrientation(event);
+      }, true);
 
     }
   }
@@ -111,7 +123,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       fillColor: "#bff",
       fillOpacity: 0.8,
       scale: 10,
-      rotation: this.heading,
+      rotation: this.deviceDirection,
       strokeColor: '#4cf',
       strokeWeight: 2
     };
@@ -119,7 +131,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  updateDashboard(position: any) {
+  updateDashboard(position: Position) {
     this.speed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
     this.heading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
     this.altitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
@@ -128,9 +140,19 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     document.getElementById("altitude").innerText = this.altitude + "";
   }
 
+  displayDeviceOrientation(event: DeviceOrientationEvent) {
+    this.deviceAbsolute = event.absolute || false;
+    this.deviceBank = event.gamma || 0;
+    this.devicePitch = event.beta || 0;
+    this.deviceDirection = event.alpha || 0;
+    document.getElementById("bank").innerText = this.deviceBank + "";
+    document.getElementById("pitch").innerText = this.devicePitch + "";
+    document.getElementById("direction").innerText = this.deviceDirection + "";
+  }
+
   hideAttributions() {
     console.log("MapComponent::hideAttributions");
-    const sleep = (milliseconds) => {
+    const sleep = (milliseconds: number) => {
       return new Promise(resolve => setTimeout(resolve, milliseconds));
     };
     sleep(1500).then(() => {
