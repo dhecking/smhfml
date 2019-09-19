@@ -38,7 +38,7 @@
   "vsicons.presets.angular": true,
   "vsicons.projectDetection.autoReload": true,
 
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 2,
   "workbench.colorTheme": "Abyss",
   "workbench.iconTheme": "vscode-icons",
   "json.format.enable": false,
