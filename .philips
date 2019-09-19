@@ -1,0 +1,9 @@
+https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol
+
+upnp
+
+https://discovery.meethue.com/
+[{"id":"001788fffe2c5dbc","internalipaddress":"192.168.1.70"}]
+
+clip api debugger
+http://192.168.1.70/debug/clip.html
