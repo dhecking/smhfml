@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-maps": {
+    "team-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-maps",
+            "outputPath": "dist/team-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-maps:build"
+            "browserTarget": "team-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-maps:build:production"
+              "browserTarget": "team-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-maps:build"
+            "browserTarget": "team-angular:build"
           }
         },
         "test": {
@@ -97,11 +97,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-maps:serve"
+            "devServerTarget": "team-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-maps:serve:production"
+              "devServerTarget": "team-angular:serve:production"
             }
           }
         },
@@ -115,5 +115,5 @@
       }
     }
   },
-  "defaultProject": "angular-maps"
+  "defaultProject": "team-angular"
 }

@@ -28,7 +28,7 @@ export class PubnubService {
     this.pubnub
       .publish({
         message: newMessage,
-        channel: "angular-maps"
+        channel: "team-angular"
       })
       .then((response: any) => {
         console.log(response);
