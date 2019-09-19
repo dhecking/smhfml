@@ -17,7 +17,7 @@ export class MapService implements OnDestroy {
   constructor() {
     console.log("MapService instance created.");
   }
-  
+
   ngOnDestroy() {
     console.log("MapService instance destroyed.");
   }
