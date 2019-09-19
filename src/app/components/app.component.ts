@@ -9,7 +9,7 @@ import {environment} from "../../environments/environment";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = 'Angular Maps';
+  title = 'Team Angular';
   updateAvailable = false;
 
   constructor(private update: SwUpdate) {
