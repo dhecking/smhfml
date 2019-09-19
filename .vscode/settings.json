@@ -55,4 +55,5 @@
   "problems.decorations.enabled": true,
   "svgviewer.transparencycolor": "white",
   "svgviewer.transparencygrid": true,
+  "workbench.tips.enabled": false,
 }
