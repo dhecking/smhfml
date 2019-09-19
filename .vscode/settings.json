@@ -39,7 +39,7 @@
   "vsicons.projectDetection.autoReload": true,
 
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Dark+ Material",
+  "workbench.colorTheme": "Abyss",
   "workbench.iconTheme": "vscode-icons",
   "json.format.enable": false,
   "vsicons.presets.hideExplorerArrows": true,
