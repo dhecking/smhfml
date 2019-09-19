@@ -18,6 +18,7 @@ import { PubnubService } from './services/pubnub.service';
 import { WebNotificationService } from './services/web-notification.service';
 
 import { AppComponent } from './components/app.component';
+import { HomeComponent } from './components/home/home.component';
 import { MapComponent } from './components/map/map.component';
 import { GridComponent } from './components/grid/grid.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -27,7 +28,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { SettingsComponent } from './components/settings/settings.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MapComponent },
+  { path: '', component: HomeComponent },
   { path: 'map', component: MapComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '**', component: ErrorComponent }
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     SidenavComponent,
     FooterComponent,
     NotificationComponent,
-    SettingsComponent
+    SettingsComponent,
+    HomeComponent
   ],
   providers: [
     PubnubService,
