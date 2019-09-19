@@ -7,3 +7,18 @@ https://discovery.meethue.com/
 
 clip api debugger
 http://192.168.1.70/debug/clip.html
+
+http://192.168.1.70/api/newdeveloper
+
+POST /api
+{"devicetype":"my_hue_app#iphone peter"}
+[
+	{
+		"success": {
+			"username": "Bsmb0C4ah7xaSHjwqnFPOGRokDE7oO8NEttQxEuR"
+		}
+	}
+]
+
+get a list of lights
+http://192.168.1.70/api/Bsmb0C4ah7xaSHjwqnFPOGRokDE7oO8NEttQxEuR/lights
