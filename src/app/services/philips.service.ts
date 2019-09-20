@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
 
-declare var PubNub: any;
-
 @Injectable({
   providedIn: "root"
 })
@@ -14,4 +12,7 @@ export class PhilipsService {
     return this;
   }
 
+  login() {}
+
+  getLights() {}
 }
