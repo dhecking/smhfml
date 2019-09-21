@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1568887022765,
+  "timestamp": 1569066923652,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -10,14 +10,14 @@
       "urls": [
         "/favicon.png",
         "/index.html",
-        "/main-es2015.14f98c146cd5d9ff8636.js",
-        "/main-es5.14f98c146cd5d9ff8636.js",
+        "/main-es2015.2a8017b11ce34ee06058.js",
+        "/main-es5.2a8017b11ce34ee06058.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.1143b795f1c102f3524e.js",
         "/polyfills-es5.3639dc46cb4dab825d64.js",
         "/runtime-es2015.24b02acc1f369d9b9f37.js",
         "/runtime-es5.24b02acc1f369d9b9f37.js",
-        "/styles.fa486fece1a6816ea4c2.css"
+        "/styles.441f8cfbe7a0df4750af.css"
       ],
       "patterns": []
     },
@@ -44,14 +44,7 @@
         "/assets/kml/westcampus.kml",
         "/assets/media/github/repository-open-graph-template.png",
         "/assets/svg/demo-1.svg",
-        "/assets/svg/svg-1.svg",
-        "/assets/theme/68747470733a2f2f6170692e747269616e676c6966792e696f2f707265766965772f6c617267652f773a3134343021683a39303021783a477265797321763a302e36303321633a302e30323821733a793937326a79.png",
-        "/assets/theme/cool-background-blue.png",
-        "/assets/theme/cool-background-red.png",
-        "/assets/theme/cool-background-white.png",
-        "/assets/theme/cool-background.png",
-        "/assets/theme/download.png",
-        "/assets/theme/trianglify-lowres.png"
+        "/assets/svg/svg-1.svg"
       ],
       "patterns": []
     }
@@ -77,23 +70,16 @@
     "/assets/media/github/repository-open-graph-template.png": "7b7aa6e4331208e913406d654cdc511d4aeb1ebe",
     "/assets/svg/demo-1.svg": "4b0d951f483203275584ef8d9ee7d1689e80e277",
     "/assets/svg/svg-1.svg": "8fdf56ff45567b1102fee2e1b9de408ec57d4198",
-    "/assets/theme/68747470733a2f2f6170692e747269616e676c6966792e696f2f707265766965772f6c617267652f773a3134343021683a39303021783a477265797321763a302e36303321633a302e30323821733a793937326a79.png": "12c86a438e6c5d6cee4e632c37f0d9188e7e163a",
-    "/assets/theme/cool-background-blue.png": "eda4fe36704869209b07f0f35f2b3d0299c48b70",
-    "/assets/theme/cool-background-red.png": "e15c923215336f9feba01dad501a540f9e984995",
-    "/assets/theme/cool-background-white.png": "001dc6ab383d54242ba1a09c0114e32af7d258e0",
-    "/assets/theme/cool-background.png": "dfae527eabec7fef68209f93c6de1a313d4a90a8",
-    "/assets/theme/download.png": "4d07c663617d20e70ca2a776c6f299c1011b1b02",
-    "/assets/theme/trianglify-lowres.png": "68626fec56cc8720b19f2ecbc1844a709e13e584",
     "/favicon.png": "0675781c161fc7ae0cb776856cbc6690681a3416",
-    "/index.html": "752df7dd466547de2019139e20457cc2e862cf93",
-    "/main-es2015.14f98c146cd5d9ff8636.js": "68e260710354823226854555882018b20e02a986",
-    "/main-es5.14f98c146cd5d9ff8636.js": "75619c9f3431b41ea05beb18ff3e74e9d33113f5",
+    "/index.html": "42308113ed4463c2a7de59f3127e54db5d88f837",
+    "/main-es2015.2a8017b11ce34ee06058.js": "236f60fe97e87e1798c6ab031cce338839168bd8",
+    "/main-es5.2a8017b11ce34ee06058.js": "7c53e5eb79393ef28cc47fe1901a226e0c7ff5c3",
     "/manifest.webmanifest": "f4514c15e23158b09e91e89c06ae7c9325baed6b",
     "/polyfills-es2015.1143b795f1c102f3524e.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
     "/polyfills-es5.3639dc46cb4dab825d64.js": "db091f7ef692a1d3add240459a2ea20c81cd6f19",
     "/runtime-es2015.24b02acc1f369d9b9f37.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/runtime-es5.24b02acc1f369d9b9f37.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/styles.fa486fece1a6816ea4c2.css": "72862fac4ec89e2dfcee821b975ba46b8bfc7d27"
+    "/styles.441f8cfbe7a0df4750af.css": "d038eaadaf2049a365ab5170240acbb1bf68584c"
   },
   "navigationUrls": [
     {

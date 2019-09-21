@@ -87,13 +87,9 @@ THE SOFTWARE.
 
 @angular/material/button
 
-@angular/material/core
+@angular/material/grid-list
 
 @angular/material/icon
-
-@angular/material/list
-
-@angular/material/sidenav
 
 @angular/platform-browser
 MIT
