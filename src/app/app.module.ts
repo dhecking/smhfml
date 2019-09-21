@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { environment } from '../environments/environment';
 
 import { MatIconModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
     MatDividerModule,
     MatListModule,
     MatTabsModule,

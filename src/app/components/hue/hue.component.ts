@@ -20,7 +20,8 @@ export class HueComponent implements OnInit {
     this.hueService.getLights().subscribe( data => {
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
-          this.lights.push(new Light(key, data[key].name));
+          const light = new Light(key, data[key].name, data[key].state);
+          this.lights.push(light);
         }
       }
     });
