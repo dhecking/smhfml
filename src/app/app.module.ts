@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
+import { HueService } from './services/hue.service';
 import { PubnubService } from './services/pubnub.service';
 import { WebNotificationService } from './services/web-notification.service';
 
@@ -27,20 +28,36 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { HueComponent } from './components/hue/hue.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'maps', component: MapComponent },
-  { path: 'photos', component: GridComponent },
+  { path: 'hue', component: HueComponent },
   { path: 'camera', component: CameraComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    ErrorComponent,
+    SidenavComponent,
+    GridComponent,
+    MapComponent,
+    SidenavComponent,
+    FooterComponent,
+    NotificationComponent,
+    SettingsComponent,
+    HomeComponent,
+    CameraComponent,
+    HueComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
@@ -54,20 +71,8 @@ const appRoutes: Routes = [
     ),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  declarations: [
-    AppComponent,
-    ErrorComponent,
-    SidenavComponent,
-    GridComponent,
-    MapComponent,
-    SidenavComponent,
-    FooterComponent,
-    NotificationComponent,
-    SettingsComponent,
-    HomeComponent,
-    CameraComponent
-  ],
   providers: [
+    HueService,
     PubnubService,
     WebNotificationService
   ],
