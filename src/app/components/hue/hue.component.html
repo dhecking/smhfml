@@ -1,1 +1,7 @@
-
+<div #hue id="hue">
+<ul>
+  <li *ngFor="let light of lights">
+    <span>{{light.id}}</span> {{light.name}}
+  </li>
+</ul>
+</div>

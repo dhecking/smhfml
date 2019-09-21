@@ -2,6 +2,9 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
+/**
+ *  https://developers.meethue.com/develop/hue-api/
+ */
 @Injectable({
   providedIn: "root"
 })
