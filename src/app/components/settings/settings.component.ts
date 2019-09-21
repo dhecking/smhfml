@@ -13,7 +13,7 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.pubnubService.publishMessage("SettingsComponent:: ngOnInit()");
+      this.pubnubService.publishMessage("SettingsComponent::ngOnInit()");
   }
 
 }

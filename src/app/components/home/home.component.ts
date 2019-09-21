@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
 declare var Trianglify: any;
 
 @Component({
@@ -7,22 +7,23 @@ declare var Trianglify: any;
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  
+
+  constructor() {
+    console.log("HomeComponent::constructor");
+  }
+
   ngOnInit(): void {
     console.log("HomeComponent::ngOnInit");
 
     // set up the base pattern
-    const pattern = Trianglify({
-      height: window.innerHeight,
-      width: window.innerWidth,
-      cell_size: 30 + Math.random() * 100
-    });
+    // const pattern = Trianglify({
+    //   cell_size: 30 + Math.random() * 100
+    // });
+    // pattern.canvas(document.getElementById("homenow"));
 
-    const display = document.getElementById("homenow");
-    display.appendChild(pattern.canvas());
-    display.appendChild(pattern.svg());
-    const png = document.createElement("img");
-    png.src = pattern.png();
-    document.body.appendChild(png);
+    // display.appendChild(pattern.svg());
+    // const png = document.createElement("img");
+    // png.src = pattern.png();
+    // document.body.appendChild(png);
   }
 }

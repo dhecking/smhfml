@@ -21,6 +21,7 @@ import { AppComponent } from './components/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MapComponent } from './components/map/map.component';
 import { GridComponent } from './components/grid/grid.component';
+import { CameraComponent } from './components/camera/camera.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -29,7 +30,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'map', component: MapComponent },
+  { path: 'maps', component: MapComponent },
+  { path: 'photos', component: GridComponent },
+  { path: 'camera', component: CameraComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '**', component: ErrorComponent }
 ];
@@ -61,7 +64,8 @@ const appRoutes: Routes = [
     FooterComponent,
     NotificationComponent,
     SettingsComponent,
-    HomeComponent
+    HomeComponent,
+    CameraComponent
   ],
   providers: [
     PubnubService,

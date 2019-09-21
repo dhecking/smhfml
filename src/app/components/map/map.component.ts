@@ -362,9 +362,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.geoSpeed = parseInt(Math.round(position.coords.speed).toFixed(0), 10);
     this.geoHeading = parseInt(Math.round(position.coords.heading).toFixed(0), 10);
     this.geoAltitude = parseInt(Math.round(position.coords.altitude).toFixed(0), 10);
-    document.getElementById("geoSpeed").innerText = this.geoSpeed + "";
-    document.getElementById("geoHeading").innerText = this.geoHeading + "";
-    document.getElementById("geoAltitude").innerText = this.geoAltitude + "";
+    // document.getElementById("geoSpeed").innerText = this.geoSpeed + "";
+    // document.getElementById("geoHeading").innerText = this.geoHeading + "";
+    // document.getElementById("geoAltitude").innerText = this.geoAltitude + "";
   }
 
   displayDeviceOrientation(event: DeviceOrientationEvent) {
@@ -372,8 +372,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deviceBank = parseInt(Math.round(event.alpha).toFixed(0), 10);
     this.devicePitch = parseInt(Math.round(event.beta).toFixed(0), 10);
     this.deviceDirection = parseInt(Math.round(event.gamma).toFixed(0), 10);
-    document.getElementById("deviceDirection").innerText = this.deviceDirection + "";
-    document.getElementById("deviceHeading").innerText = this.deviceHeading + "";
+    // document.getElementById("deviceDirection").innerText = this.deviceDirection + "";
+    // document.getElementById("deviceHeading").innerText = this.deviceHeading + "";
   }
 
 }

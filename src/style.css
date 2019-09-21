@@ -2,8 +2,11 @@ html,
 body {
   margin: 0;
   height: 100vh;
+  width: 100vw;
+  background-color: lightslategray;
   overscroll-behavior-y: contain;
   font-family: Roboto, Arial, sans-serif;
+
 }
 
 ::-webkit-scrollbar {
