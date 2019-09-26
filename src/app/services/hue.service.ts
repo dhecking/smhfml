@@ -36,13 +36,13 @@ export class HueService {
     return this.httpClient.put(this.baseUri + "/lights/" + id, body);
   }
 
-  turnLightOn(id: number) {
-    const body: string = '{"on": true}';
+  setLightEffect(id: number, name: string) {
+    const body: string = '{"effect": "' + name + '"}';
     return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
   }
 
-  turnLightOff(id: number) {
-    const body: string = '{"on": false}';
+  turnLightOn(id: number, on: boolean) {
+    const body: string = '{"on":' + on + '}';
     return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
   }
 

@@ -1,15 +1,18 @@
 <div class="flex-container">
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
-</div>
-<div class="flex-container">
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
-</div>
-<div class="flex-container">
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
-  <div style="flex-grow: 1"></div>
+  <div *ngFor="let location of room.locations" class="flex-tile">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar [style.backgroundColor]="location.styleBackgroundColor" [style.backgroundImage]="location.styleBackgroundImage"></div>
+        <mat-card-title>{{ location.light.name }}</mat-card-title>
+        <mat-card-subtitle>{{ location.light.state.bri }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-slider min="1" step="1" max="254" [value]="location.light.state.bri"> </mat-slider>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="toggleEffect(location.light)">loop</button>
+        <button mat-button (click)="turnLightOn(location.light)">power</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

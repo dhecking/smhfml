@@ -1,10 +1,53 @@
 .flex-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
-  height: 33%;
+  height: 100vh;
 }
 
-.flex-container > div {
-  background: none;
+.flex-tile {
+  background-size: 25%;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
+  height: 33.3333%;
+  width: 33.3333%;
+}
+
+mat-card {
+  margin: 5%;
+}
+.mat-card-avatar {
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white
+}
+mat-slider{
+  width: 100%;
+}
+
+.colorloop {
+  animation-name: colorchange;
+  animation-duration: 50s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes colorchange
+{
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
 }
