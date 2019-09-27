@@ -1,8 +1,4 @@
 {
   "port": 8080,
-  "open": false,
-  "injectChanges": false,
-  "files": [ "" ],
-  "watchOptions": { "ignored": "node_modules" },
-  "server": { "baseDir": "./dist/team-angular" }
+  "server": { "baseDir": "./dist/team-angular"}
 }

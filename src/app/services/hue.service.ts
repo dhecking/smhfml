@@ -12,21 +12,8 @@ export class HueService {
   baseUri: string;
 
   constructor(private httpClient: HttpClient) {
-    console.log("Begin HueService::constructor");
-    // this.getBaseUri();
     this.baseUri = "//" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
-    console.log("Finish HueService::constructor");
   }
-
-  /**
-   * https://discovery.meethue.com
-   * https://www.meethue.com/api/nupnp
-   */
-  // async getBaseUri() {
-  //   const data = await this.httpClient.get("https://discovery.meethue.com").toPromise();
-  //   this.baseUri = "//" + data[0].internalipaddress + "/api/" + environment.philipsApiKey;
-  //   console.log(this.baseUri);
-  // }
 
   login() {
     return this.httpClient.get(this.baseUri);

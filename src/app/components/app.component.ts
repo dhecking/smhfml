@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import { Title } from '@angular/platform-browser';
 import {SwUpdate} from "@angular/service-worker";
 import * as firebase from "firebase/app";
 import {environment} from "../../environments/environment";
@@ -9,26 +10,29 @@ import {environment} from "../../environments/environment";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = 'Team Angular';
   updateAvailable = false;
 
-  constructor(private update: SwUpdate) {
-      console.log("AppComponent::constructor", update);
-      update.available.subscribe((event) => {
-        console.log('Updating to latest version.');
-        this.updateAvailable = true;
-        update.activateUpdate().then(() => document.location.reload());
-      });
-    }
+  constructor(private titleService: Title, private update: SwUpdate) {
+    update.available.subscribe((event) => {
+      this.updateAvailable = true;
+      update.activateUpdate().then(() => document.location.reload());
+    });
+  }
 
-    ngOnInit(): void {
-      const config = {
-        apiKey: environment.firebaseApiKey,
-        authDomain: environment.firebaseAuthDomain,
-        databaseURL: environment.firebaseDatabaseURL,
-        projectId: environment.firebaseProjectId,
-        storageBucket: environment.firebaseStorageBucket
-      };
-      firebase.initializeApp(config);
-    }
+  ngOnInit(): void {
+    this.setTitle(environment.app + " " + environment.version);
+    const config = {
+      apiKey: environment.firebaseApiKey,
+      authDomain: environment.firebaseAuthDomain,
+      databaseURL: environment.firebaseDatabaseURL,
+      projectId: environment.firebaseProjectId,
+      storageBucket: environment.firebaseStorageBucket
+    };
+    firebase.initializeApp(config);
+  }
+
+  public setTitle(title: string) {
+    this.titleService.setTitle(title);
+  }
+
 }

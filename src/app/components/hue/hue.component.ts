@@ -1,11 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Room } from "./types/room";
 import { Light } from "./types/light";
 import { HueService } from "../../services/hue.service";
-
-const sleep = (milliseconds: number) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
 
 /**
  * http://arndbrugman.github.io/huepi/hueMediate/index.html
@@ -16,17 +12,11 @@ const sleep = (milliseconds: number) => {
   templateUrl: './hue.component.html',
   styleUrls: ['./hue.component.css']
 })
-export class HueComponent implements AfterViewInit {
+export class HueComponent {
   room: Room = new Room();
 
   constructor(private hueService: HueService) {
-    console.log("HueComponent::constructor");
-  }
-
-  ngAfterViewInit(): void {
-    console.log("Begin HueComponent::ngAfterViewInit");
     this.refreshLights();
-    console.log("Finish HueComponent::ngAfterViewInit");
   }
 
   refreshLights() {
