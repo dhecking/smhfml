@@ -17,6 +17,10 @@ export class HueService {
     console.log("Finish HueService::constructor");
   }
 
+  /**
+   * https://discovery.meethue.com
+   * https://www.meethue.com/api/nupnp
+   */
   async getBaseUri() {
     const data = await this.httpClient.get("https://discovery.meethue.com").toPromise();
     this.baseUri = "//" + data[0].internalipaddress + "/api/" + environment.philipsApiKey;

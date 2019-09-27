@@ -47,6 +47,11 @@ export class HueComponent implements AfterViewInit {
 
     console.log(">>>> " + this.hueService.baseUri);
 
+    this.hueService.login().subscribe(data => {
+      console.log(data);
+    });
+
+
     this.hueService.getLights().subscribe( data => {
       const lights = new Array<Light>();
       for (const key in data) {
