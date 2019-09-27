@@ -12,11 +12,15 @@ export class HueService {
   baseUri: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUri = "https://" + environment.philipsBridgeIp + "/api/" + environment.philipsApiKey;
+    console.log("Begin HueService::constructor");
+    this.getBaseUri();
+    console.log("Finish HueService::constructor");
   }
 
-  getBridge() {
-    return this.httpClient.get("https://discovery.meethue.com");
+  async getBaseUri() {
+    const data = await this.httpClient.get("https://discovery.meethue.com").toPromise();
+    this.baseUri = "//" + data[0].internalipaddress + "/api/" + environment.philipsApiKey;
+    console.log(this.baseUri);
   }
 
   login() {
@@ -42,12 +46,11 @@ export class HueService {
   }
 
   turnLightOn(id: number, on: boolean) {
-    const body: string = '{"on":' + on + '}';
+    const body: string = '{"on":' + on + "}";
     return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
   }
 
   getNewLights() {
     return this.httpClient.get(this.baseUri + "/lights/new");
   }
-
 }

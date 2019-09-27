@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Room } from "./types/room";
 import { Light } from "./types/light";
 import { HueService } from "../../services/hue.service";
+
+const sleep = (milliseconds: number) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 /**
  * http://arndbrugman.github.io/huepi/hueMediate/index.html
@@ -12,14 +16,37 @@ import { HueService } from "../../services/hue.service";
   templateUrl: './hue.component.html',
   styleUrls: ['./hue.component.css']
 })
-export class HueComponent {
+export class HueComponent implements AfterViewInit {
   room: Room = new Room();
 
   constructor(private hueService: HueService) {
-    this.refreshLights();
+    console.log("HueComponent::constructor");
   }
 
-  refreshLights() {
+  ngAfterViewInit(): void {
+    console.log("Begin HueComponent::ngAfterViewInit");
+    this.refreshLights();
+    console.log("Finish HueComponent::ngAfterViewInit");
+  }
+
+  async refreshLights() {
+
+    if (!this.hueService.baseUri ) {
+      console.log("Strike One");
+      await sleep(1000).then(() => {
+        if (!this.hueService.baseUri) {
+          console.log("Strike Two");
+          sleep(1000).then(() => {
+            if (!this.hueService.baseUri) {
+              console.log("Strike Three");
+            }
+          });
+        }
+      });
+    }
+
+    console.log(">>>> " + this.hueService.baseUri);
+
     this.hueService.getLights().subscribe( data => {
       const lights = new Array<Light>();
       for (const key in data) {
