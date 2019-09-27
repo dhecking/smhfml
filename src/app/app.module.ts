@@ -31,6 +31,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HueComponent } from './components/hue/hue.component';
+import { SafePipe } from './safe.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     SettingsComponent,
     HomeComponent,
     CameraComponent,
-    HueComponent
+    HueComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

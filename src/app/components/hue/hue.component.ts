@@ -29,39 +29,20 @@ export class HueComponent implements AfterViewInit {
     console.log("Finish HueComponent::ngAfterViewInit");
   }
 
-  async refreshLights() {
-
-    if (!this.hueService.baseUri ) {
-      console.log("Strike One");
-      await sleep(1000).then(() => {
-        if (!this.hueService.baseUri) {
-          console.log("Strike Two");
-          sleep(1000).then(() => {
-            if (!this.hueService.baseUri) {
-              console.log("Strike Three");
-            }
-          });
-        }
-      });
-    }
-
-    console.log(">>>> " + this.hueService.baseUri);
-
-    this.hueService.login().subscribe(data => {
-      console.log(data);
-    });
-
-
-    this.hueService.getLights().subscribe( data => {
-      const lights = new Array<Light>();
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          const light = new Light(parseInt(key, 10), data[key].name, data[key].state);
-          lights.push(light);
+  refreshLights() {
+    this.hueService.login().subscribe( (data: any) => {
+      const lights: any = data.lights;
+      const lightArray = new Array<Light>();
+      for (const key in lights) {
+        if (lights.hasOwnProperty(key)) {
+          const light = new Light(parseInt(key, 10), lights[key].name, lights[key].state);
+          lightArray.push(light);
         }
       }
-      this.room.addLights(lights);
+      console.log("Lights: " + lightArray.length);
+      this.room.addLights(lightArray);
     });
+
   }
 
   toggleEffect(light: Light) {

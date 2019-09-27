@@ -12,7 +12,7 @@ export class Room {
     this.locations.push(new Location(24, "archetypesDeskLamp"));
     this.locations.push(new Location(17, "archetypesFloorShade"));
     this.locations.push(new Location(19, "archetypesFloorShade"));
-    this.locations.push(new Location(21, "heroesLightstrip"));
+    this.locations.push(new Location(26, "heroesLightstrip"));
     this.locations.push(new Location(23, "heroesLightstrip"));
   }
 
