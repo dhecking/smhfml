@@ -19,6 +19,7 @@ export const environment = {
   pubnubPublishKey: "pub-c-d6884608-953e-4f02-906b-c9c742cf0cd3",
   pubnubSubscribeKey: "sub-c-c3c303ea-d94d-11e9-9067-a65ad2c362ff",
 
-  philipsBridge: "71.131.36.206", /* 71.131.36.206, 92.168.1.70 */
+  // dhecking@appeligo:~/github/dhecking/smhfml$ ssh -R 443:71.131.36.206:80 serveo.net
+  philipsBridge: "nolle.serveo.net", /* nolle.serveo.net, 71-131-36-206.lightspeed.tukrga.sbcglobal.net, 71.131.36.206, 92.168.1.70 */
   philipsApiKey: "Bsmb0C4ah7xaSHjwqnFPOGRokDE7oO8NEttQxEuR"
 };
