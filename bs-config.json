@@ -1,4 +1,6 @@
 {
-  "port": 8080,
-  "server": { "baseDir": "./dist/team-angular"}
+  "open": false,
+  "port": 80,
+  "files": ["./src/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "./dist/team-angular" }
 }

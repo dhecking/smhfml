@@ -12,7 +12,7 @@ export class HueService {
   baseUri: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUri = "//" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
+    this.baseUri = "https://" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
   }
 
   login() {
