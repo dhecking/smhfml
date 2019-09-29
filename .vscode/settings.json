@@ -6,6 +6,7 @@
   "editor.fontLigatures": false,
   "editor.fontSize": 14,
   "editor.folding": false,
+  "editor.formatOnSave": true,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.enabled": false,
   "editor.mouseWheelScrollSensitivity": 3,
@@ -13,6 +14,7 @@
   "editor.tabSize": 4,
   "editor.wordWrapColumn": 180,
 
+  "explorer.autoReveal": true,
   "explorer.decorations.colors": false,
 
   "files.autoSave": "onFocusChange",
@@ -26,7 +28,8 @@
   "prettier.bracketSpacing": false,
   "prettier.printWidth": 180,
   "prettier.tabWidth": 4,
-
+  "remote.WSL.fileWatcher.polling": true,
+  
   "scm.diffDecorations": "none",
 
   "svgviewer.enableautopreview": false,
@@ -34,7 +37,7 @@
 
   "typescript.updateImportsOnFileMove.enabled": "always",
 
-  "vsicons.dontShowNewVersionMessage": false,
+  "vsicons.dontShowNewVersionMessage": true,
   "vsicons.presets.angular": true,
   "vsicons.projectDetection.autoReload": true,
 
@@ -45,14 +48,12 @@
   "workbench.tree.indent": 18,
   "workbench.tree.renderIndentGuides": "none",
   "workbench.editor.revealIfOpen": true,
-  "ngschematics.schematics": [
-    "@angular/material"
-  ],
+  "ngschematics.schematics": ["@angular/material"],
   "outline.icons": false,
   "scm.providers.visible": 0,
   "terminal.integrated.copyOnSelection": true,
   "problems.decorations.enabled": true,
   "svgviewer.transparencycolor": "white",
   "svgviewer.transparencygrid": true,
-  "workbench.tips.enabled": false,
+  "workbench.tips.enabled": false
 }
