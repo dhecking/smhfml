@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "app-cam",
@@ -12,7 +12,9 @@ export class CamComponent implements OnInit, OnDestroy {
   camSensor: HTMLCanvasElement;
   camTrigger: HTMLButtonElement;
 
-  constructor() {}
+  constructor() {
+    console.log("CamComponent::constructor");
+  }
 
   ngOnInit() {
     this.camView = document.querySelector("#cam--view");
@@ -37,7 +39,7 @@ export class CamComponent implements OnInit, OnDestroy {
     });
 
     // const constraints = { video: {deviceId}, audio: true };
-    const hdConstraints = {video: {width: {min: 1280}, height: {min: 720}}};
+    const hdConstraints = { video: { width: { min: 1280 }, height: { min: 720 } } };
 
     navigator.mediaDevices
       .getUserMedia(hdConstraints)

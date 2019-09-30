@@ -1,7 +1,7 @@
-import {Component} from "@angular/core";
-import {Room} from "../../types/room";
-import {Light} from "../../types/light";
-import {HueService} from "../../services/hue.service";
+import { Component } from "@angular/core";
+import { Room } from "../../types/room";
+import { Light } from "../../types/light";
+import { HueService } from "../../services/hue.service";
 
 @Component({
   selector: "app-hue",
@@ -12,6 +12,7 @@ export class HueComponent {
   room: Room = new Room();
 
   constructor(private hueService: HueService) {
+    console.log("HueComponent::constructor");
     this.refreshLights();
   }
 

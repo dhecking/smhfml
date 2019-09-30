@@ -11,6 +11,7 @@
   "editor.minimap.enabled": false,
   "editor.mouseWheelScrollSensitivity": 3,
   "editor.mouseWheelZoom": true,
+  "editor.quickSuggestionsDelay": 3000,
   "editor.tabSize": 4,
   "editor.wordWrapColumn": 180,
 
@@ -22,12 +23,14 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  
   "gitHistory.showEditorTitleMenuBarIcons": false,
 
   "prettier.disableLanguages": [],
   "prettier.bracketSpacing": false,
   "prettier.printWidth": 180,
   "prettier.tabWidth": 4,
+
   "remote.WSL.fileWatcher.polling": true,
   
   "scm.diffDecorations": "none",
@@ -55,5 +58,6 @@
   "problems.decorations.enabled": true,
   "svgviewer.transparencycolor": "white",
   "svgviewer.transparencygrid": true,
-  "workbench.tips.enabled": false
+  "workbench.tips.enabled": false,
+  
 }

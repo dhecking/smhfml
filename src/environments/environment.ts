@@ -26,6 +26,6 @@ export const environment = {
   // 3. 71-131-36-206.lightspeed.tukrga.sbcglobal.net
   // 4. 71.131.36.206
   // 5. 192.168.1.70
-  philipsBridge: "hue.serveo.net",
+  philipsBridge: "192.168.1.70",
   philipsApiKey: "Bsmb0C4ah7xaSHjwqnFPOGRokDE7oO8NEttQxEuR"
 };

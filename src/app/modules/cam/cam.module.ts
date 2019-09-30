@@ -1,10 +1,14 @@
-import {NgModule} from "@angular/core";
-import {MatIconRegistry} from "@angular/material/icon";
+import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
 
-import {CamComponent} from "./cam.component";
+import { MatIconRegistry } from "@angular/material/icon";
+
+import { CamRoutingModule } from './cam-routing.module';
+import { CamComponent } from "./cam.component";
 
 @NgModule({
-  declarations: [CamComponent]
+  declarations: [CamComponent],
+  imports: [CommonModule, CamRoutingModule]
 })
 export class CamModule {
   constructor(private matIconRegistry: MatIconRegistry) {

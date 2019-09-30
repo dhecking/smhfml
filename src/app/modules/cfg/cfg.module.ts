@@ -1,9 +1,12 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
 
+import { CfgRoutingModule } from './cfg-routing.module';
 import { CfgComponent } from "./cfg.component";
 
 @NgModule({
-  declarations: [CfgComponent]
+  declarations: [CfgComponent],
+  imports: [CommonModule, CfgRoutingModule]
 })
 export class CfgModule {
   constructor() {

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   updateAvailable = false;
 
   constructor(private titleService: Title, private update: SwUpdate) {
+    console.log("AppComponent::constructor");
     update.available.subscribe((event) => {
       this.updateAvailable = true;
       update.activateUpdate().then(() => document.location.reload());

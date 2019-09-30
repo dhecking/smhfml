@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CfgComponent } from "./cfg.component";
+import { OneComponent } from "./one.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: CfgComponent
+    component: OneComponent
   }
 ]
 
@@ -15,8 +15,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class CfgRoutingModule {
+export class OneRoutingModule {
   constructor() {
-    console.log("CfgRoutingModule::constructor");
+    console.log("OneRoutingModule::constructor");
   }
 }

@@ -1,28 +1,24 @@
-#camera, #camera--view, #camera--sensor, #camera--output{
+#cam, #cam--view, #cam--sensor, #cam--output{
   position: fixed;
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-#camera--view, #camera--sensor, #camera--output{
+#cam--view, #cam--sensor, #cam--output{
   transform: scaleX(-1);
   filter: FlipH;
 }
 
-#camera--trigger{
-  width: 200px;
-  background-color: black;
-  color: white;
-  font-size: 16px;
-  border-radius: 30px;
-  border: none;
-  padding: 15px 20px;
-  text-align: center;
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+#cam--trigger{
   position: fixed;
-  bottom: 30px;
-  left: calc(50% - 100px);
+  bottom: 80px;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  border-radius: 90px;
+  background:  #bff;
+  border: 5px solid #4cf;
 }
 
 .taken{

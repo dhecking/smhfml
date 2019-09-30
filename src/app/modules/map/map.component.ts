@@ -297,6 +297,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild("googlemaps", { static: false }) mapElement: ElementRef;
 
+  constructor() {
+    console.log("MapComponent::constructor");
+  }
+
   ngOnInit(): void {
     console.log("MapComponent::ngOnInit");
     this.initMap();
@@ -319,7 +323,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         (position: Position) => {
           this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
 
-          this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpts);
+            this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpts);
           this.map.setCenter(this.geoLocation);
 
           this.marker = new google.maps.Marker();
@@ -338,7 +342,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
         (position: Position) => {
           this.geoLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
 
-          this.map.panTo(this.geoLocation);
+            this.map.panTo(this.geoLocation);
           this.marker.setPosition(this.geoLocation);
           this.updateDashboard(position);
 

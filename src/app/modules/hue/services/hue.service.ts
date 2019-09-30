@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../../environments/environment";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../../environments/environment";
 
 /**
  *  https://developers.meethue.com/develop/hue-api/
@@ -12,7 +12,7 @@ export class HueService {
   baseUri: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUri = "https://" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
+    this.baseUri = "//" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
   }
 
   login() {

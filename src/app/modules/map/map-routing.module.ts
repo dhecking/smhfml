@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MapComponent } from "./map.component";
 
-const mapRoutes: Routes = [
+const routes: Routes = [
   {
     path: "",
     component: MapComponent
@@ -11,7 +11,7 @@ const mapRoutes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(mapRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: []
 })
