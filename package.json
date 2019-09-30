@@ -27,6 +27,7 @@
     "angular-cli-ghpages": "^0.6.0",
     "firebase": "^6.6.1",
     "hammerjs": "^2.0.8",
+    "light-server": "^2.6.4",
     "ol": "^5.3.3",
     "pubnub": "^4.25.2",
     "rxjs": "~6.5.3",

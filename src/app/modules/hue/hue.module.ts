@@ -9,7 +9,7 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { HueRoutingModule } from './hue-routing.module';
-import { HueComponent } from "./components/lights/hue.component";
+import { HueComponent } from "./hue.component";
 
 @NgModule({
   declarations: [HueComponent],

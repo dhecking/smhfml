@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from '@angular/platform-browser';
 import { SwUpdate } from "@angular/service-worker";
-import * as firebase from "firebase/app";
 import { environment } from "../environments/environment";
 
 @Component({
@@ -22,14 +21,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTitle(environment.app + " " + environment.version);
-    const config = {
-      apiKey: environment.firebaseApiKey,
-      authDomain: environment.firebaseAuthDomain,
-      databaseURL: environment.firebaseDatabaseURL,
-      projectId: environment.firebaseProjectId,
-      storageBucket: environment.firebaseStorageBucket
-    };
-    firebase.initializeApp(config);
   }
 
   public setTitle(title: string) {

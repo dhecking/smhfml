@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
-
-import { MatIconRegistry, MatIcon } from "@angular/material/icon";
+import { MatIconModule } from "@angular/material";
 
 import { NavComponent } from "./nav.component";
 
 @NgModule({
-  declarations: [NavComponent, MatIcon]
+  declarations: [NavComponent],
+  imports: [MatIconModule]
 })
 export class NavModule {
-  constructor(private matIconRegistry: MatIconRegistry) {
+  constructor() {
     console.log("NavModule::constructor");
   }
 }

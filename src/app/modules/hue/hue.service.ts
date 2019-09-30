@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { DomSanitizer } from "@angular/platform-browser";
-import { MatIconRegistry } from "@angular/material/icon";
+import { HttpClient } from '@angular/common/http';
 
-import { environment } from "../../../../environments/environment";
+import { environment } from "../../../environments/environment";
 
 /**
  *  https://developers.meethue.com/develop/hue-api/
@@ -14,11 +12,9 @@ import { environment } from "../../../../environments/environment";
 export class HueService {
   baseUri: string;
 
-  constructor(private httpClient: HttpClient, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+  constructor(private httpClient: HttpClient) {
     console.log("HueService::constructor");
     this.baseUri = "//" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
-    this.matIconRegistry.addSvgIconInNamespace('hue', 'heroesLightstrip',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/hue/heroesLightstrip.svg"));
   }
 
   login() {

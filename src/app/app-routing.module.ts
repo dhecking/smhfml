@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const appRoutes: Routes = [
+const routes: Routes = [
   { path: 'one', loadChildren: () => import('./modules/one/one.module').then(mod => mod.OneModule) },
   { path: 'map', loadChildren: () => import('./modules/map/map.module').then(mod => mod.MapModule) },
   { path: 'hue', loadChildren: () => import('./modules/hue/hue.module').then(mod => mod.HueModule) },
@@ -12,9 +12,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule],
-  providers: []
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
   constructor() {

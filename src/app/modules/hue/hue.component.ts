@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 
-import { Room } from "../../types/room";
-import { Light } from "../../types/light";
-import { Location } from "../../types/location";
-import { HueService } from "../../services/hue.service";
+import { Room } from "./types/room";
+import { Light } from "./types/light";
+import { Location } from "./types/location";
+import { HueService } from "./hue.service";
 
 @Component({
   selector: "app-hue",

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HueComponent } from "./components/lights/hue.component";
+import { HueComponent } from "./hue.component";
 
 const routes: Routes = [
     {
