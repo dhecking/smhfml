@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { MatIconRegistry, MatIcon } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material";
 import { MatCardModule } from "@angular/material/card";
@@ -13,11 +13,10 @@ import { HueComponent } from "./components/lights/hue.component";
 
 @NgModule({
   declarations: [HueComponent],
-  imports: [CommonModule, HueRoutingModule, MatButtonModule, MatCardModule, MatIconModule, MatSliderModule, MatSlideToggleModule]
+  imports: [CommonModule, FormsModule, HueRoutingModule, MatButtonModule, MatCardModule, MatIconModule, MatSliderModule, MatSlideToggleModule]
 })
 export class HueModule {
-  constructor(private matIconRegistry: MatIconRegistry) {
+  constructor() {
     console.log("HueModule::constructor");
-    this.matIconRegistry.addSvgIcon(`lightstrip`, `assets/herosLightstrip.svg`);
   }
 }

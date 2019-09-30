@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { DomSanitizer } from "@angular/platform-browser";
+import { MatIconRegistry } from "@angular/material/icon";
+
 import { environment } from "../../../../environments/environment";
 
 /**
@@ -11,8 +14,11 @@ import { environment } from "../../../../environments/environment";
 export class HueService {
   baseUri: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    console.log("HueService::constructor");
     this.baseUri = "//" + environment.philipsBridge + "/api/" + environment.philipsApiKey;
+    this.matIconRegistry.addSvgIconInNamespace('hue', 'heroesLightstrip',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/hue/heroesLightstrip.svg"));
   }
 
   login() {
@@ -30,6 +36,16 @@ export class HueService {
   setLightName(id: number, name: string) {
     const body: string = '{"name":"' + name + '"}';
     return this.httpClient.put(this.baseUri + "/lights/" + id, body);
+  }
+
+  updateState(id: number, name: string, value: number) {
+    const body: string = '{"' + name + '": ' + value + '}';
+    return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
+  }
+
+  setBrightness(id: number, val: number) {
+    const body: string = '{"bri": ' + val + '}';
+    return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
   }
 
   setLightEffect(id: number, name: string) {

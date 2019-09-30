@@ -1,15 +1,23 @@
 <div class="flex-container">
-  <div *ngFor="let location of room.locations" class="flex-tile">
+  <div class="flex-tile" *ngFor="let location of room.locations">
     <mat-card>
       <mat-card-header>
-        <div mat-card-avatar [style.backgroundColor]="location.styleBackgroundColor"></div>
+        <!-- <mat-icon height="100%" svgIcon="hue:heroesLightstrip" [style.backgroundColor]="location.styleBackgroundColor">
+        </mat-icon> -->
+        <div mat-card-avatar [style.backgroundColor]="location.styleBackgroundColor"
+          [style.backgroundImage]="location.styleBackgroundImage">
+        </div>
         <div class="mat-spacer"></div>
-        <mat-slide-toggle [id]="location.light.id" aria-label="power" color="accent" [checked]="location.light.state.on"
-          (change)="turnLightOn(location.light)">
+        <mat-slide-toggle [checked]="location.light.state.on"
+          (change)="update(location, 'on', !location.light.state.on)">
         </mat-slide-toggle>
       </mat-card-header>
       <mat-card-content>
-        <mat-slider min="1" step="1" max="254" [value]="location.light.state.bri">
+        <mat-slider [(ngModel)]="location.light.state.bri" max="254"
+          (change)="update(location, 'bri', location.light.state.bri)">
+        </mat-slider>
+        <mat-slider [(ngModel)]="location.light.state.sat" max="254"
+          (change)="update(location, 'sat', location.light.state.sat)">
         </mat-slider>
       </mat-card-content>
     </mat-card>

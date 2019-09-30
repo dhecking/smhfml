@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
+
 import { Room } from "../../types/room";
 import { Light } from "../../types/light";
+import { Location } from "../../types/location";
 import { HueService } from "../../services/hue.service";
 
 @Component({
@@ -34,16 +36,33 @@ export class HueComponent {
   toggleEffect(light: Light) {
     const effect: string = light.state.effect === "colorloop" ? "none" : "colorloop";
     this.hueService.setLightEffect(light.id, effect).subscribe(edit => {
-      console.log(edit);
+      console.log(edit, light);
       light.state.effect = effect;
     });
   }
 
-  turnLightOn(light: Light) {
-    const on: boolean = !light.state.on;
-    this.hueService.turnLightOn(light.id, on).subscribe(edit => {
-      console.log(edit);
-      light.state.on = on;
+  turnLightOn(location: Location) {
+    const on: boolean = !location.light.state.on;
+    console.log(on);
+    this.hueService.turnLightOn(location.id, on).subscribe(data => {
+      console.log(data[0].success);
+      this.hueService.getLight(location.id).subscribe((data: any) => {
+        console.log(data);
+        location.setLight(data);
+      });
     });
   }
+
+  update(location: Location, name: string, value: number) {
+    const bri: number = location.light.state.bri;
+    console.log(name + ": " + value);
+    this.hueService.updateState(location.id, name, value).subscribe(data => {
+      console.log(data);
+      this.hueService.getLight(location.id).subscribe((data: any) => {
+        console.log(data);
+        location.setLight(data);
+      });
+    });
+  }
+
 }

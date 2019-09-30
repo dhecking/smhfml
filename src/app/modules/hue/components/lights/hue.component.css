@@ -19,24 +19,54 @@ mat-card {
   border-radius: 10px;
 }
 
+mat-card-header {
+  margin: 0 !important;
+  height: 40px !important;
+}
+
 .mat-card-avatar {
   background-position: center;
   background-repeat: no-repeat;
   color: white
 }
 
-.mat-name {
+.mat-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 90px;
+}
+/*
+::ng-deep .mat-slide-toggle-thumb {
+  background-color: rgb(255, 105, 180) !important;
+}
+
+::ng-deep .mat-slide-toggle-bar {
+  background-color: rgb(255, 105, 180, .5) !important;
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: rgb(255, 105, 180) !important;
+}
+
+::ng-deep .mat-slider-track-fill {
+  background-color: rgb(255, 105, 180, .5) !important;
+}
+*/
+/* .mat-name {
   vertical-align: middle;
   height: 100%;
 }
 
 ::ng-deep .mat-card-header-text {
-  /* CSS styles go here */
   margin: 0px !important;
-}
+} */
 
 .mat-spacer {
   flex: 1 1 auto;
+}
+
+mat-slide-toggle{
+  height: 100%;
 }
 
 mat-slider{
