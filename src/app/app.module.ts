@@ -11,8 +11,6 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatButtonModule } from "@angular/material/button";
-import { MatDividerModule } from "@angular/material/divider";
-import { MatTabsModule } from "@angular/material/tabs";
 import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 
@@ -32,9 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatDividerModule,
     MatListModule,
-    MatTabsModule,
     MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,

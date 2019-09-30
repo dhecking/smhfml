@@ -4,7 +4,7 @@
  */
 export const environment = {
   app: "Team Angular",
-  version: "0.1.2",
+  version: "0.1.3",
   production: true,
   publicVapidKey: "BCjZ15Yq28AJMmwdpbyTMQhT3AMpZ7EmKGlB1kmQnhq6UOXZHiLv5r9op3OLln9IXCiDYe3_crvWV5X0bx0jYUY",
   privateVapidKey: "OfXfAppON-qUkUmC8HJUlA5wkbgGtxhymVEdZ3fFOGo",
@@ -19,6 +19,12 @@ export const environment = {
   pubnubPublishKey: "pub-c-d6884608-953e-4f02-906b-c9c742cf0cd3",
   pubnubSubscribeKey: "sub-c-c3c303ea-d94d-11e9-9067-a65ad2c362ff",
 
-  philipsBridge: "hue.serveo.net",
+  // 1. hue.smhfml.com
+  // 2. nolle.serveo.net, dissero.serveo.net
+  //    ssh -o ServerAliveInterval=60 -R hue:443:71.131.36.206:80 serveo.net
+  // 3. 71-131-36-206.lightspeed.tukrga.sbcglobal.net
+  // 4. 71.131.36.206
+  // 5. 192.168.1.70
+  philipsBridge: "192.168.1.70",
   philipsApiKey: "Bsmb0C4ah7xaSHjwqnFPOGRokDE7oO8NEttQxEuR"
 };

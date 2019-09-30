@@ -5,7 +5,7 @@
  */
 export const environment = {
   app: "Team Angular",
-  version: "0.1.2",
+  version: "0.1.3",
   production: false,
   publicVapidKey: "BCjZ15Yq28AJMmwdpbyTMQhT3AMpZ7EmKGlB1kmQnhq6UOXZHiLv5r9op3OLln9IXCiDYe3_crvWV5X0bx0jYUY",
   privateVapidKey: "OfXfAppON-qUkUmC8HJUlA5wkbgGtxhymVEdZ3fFOGo",
