@@ -41,27 +41,13 @@ export class HueComponent {
     });
   }
 
-  turnLightOn(location: Location) {
-    const on: boolean = !location.light.state.on;
-    console.log(on);
-    this.hueService.turnLightOn(location.id, on).subscribe(data => {
-      console.log(data[0].success);
-      this.hueService.getLight(location.id).subscribe((data: any) => {
-        console.log(data);
-        location.setLight(data);
-      });
-    });
-  }
-
-  update(location: Location, name: string, value: number) {
-    const bri: number = location.light.state.bri;
-    console.log(name + ": " + value);
-    this.hueService.updateState(location.id, name, value).subscribe(data => {
-      console.log(data);
-      this.hueService.getLight(location.id).subscribe((data: any) => {
-        console.log(data);
-        location.setLight(data);
-      });
+  update(location: Location, name: string, value: any) {
+    this.hueService.updateState(location.id, name, value).subscribe((data: any) => {
+      if (data[0]) {
+        this.hueService.getLight(location.id).subscribe((data: any) => {
+          location.setLight(data);
+        });
+      }
     });
   }
 

@@ -34,8 +34,9 @@ export class HueService {
     return this.httpClient.put(this.baseUri + "/lights/" + id, body);
   }
 
-  updateState(id: number, name: string, value: number) {
+  updateState(id: number, name: string, value: any) {
     const body: string = '{"' + name + '": ' + value + '}';
+    console.log(body);
     return this.httpClient.put(this.baseUri + "/lights/" + id + "/state", body);
   }
 

@@ -6,7 +6,6 @@ body {
   background-color: lightslategray;
   overscroll-behavior-y: contain;
   font-family: Roboto, Arial, sans-serif;
-
 }
 
 ::-webkit-scrollbar {
