@@ -1,8 +1,9 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from "@angular/service-worker";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BrowserModule } from "@angular/platform-browser";
 
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
@@ -16,8 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+    BrowserModule, BrowserAnimationsModule,
     HttpClientModule,
     MatGridListModule,
     MatIconModule,
